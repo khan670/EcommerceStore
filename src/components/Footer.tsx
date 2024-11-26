@@ -5,6 +5,8 @@ import {
   Stores,
   UseFullLinks,
 } from "../data/FooterData";
+import { FaCcMastercard, FaCcPaypal, FaCcVisa } from "react-icons/fa";
+import { SiPayoneer } from "react-icons/si";
 
 const Footer = () => {
   return (
@@ -108,7 +110,7 @@ const Footer = () => {
           <div className="flex flex-col gap-5">
             <h1 className="text-lg font-extrabold">Our Newsletter</h1>
             <div>
-              <p className="text-color-text-body font-semibold">
+              <p className="text-color-text-body font-medium">
                 Subscribe to the mailing list to receive updates one the new
                 arrivals and other discounts
               </p>
@@ -126,6 +128,24 @@ const Footer = () => {
         </div>
       </div>
       <hr />
+      <div className="mt-5 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <h1 className="text-sm font-bold ">Payment System:</h1>
+          <div className="flex gap-2">
+            <FaCcVisa size={25} />
+            <FaCcMastercard size={25} />
+            <FaCcPaypal size={25} />
+            <SiPayoneer size={25} />
+          </div>
+        </div>
+        <div>
+          <p className="text-color-heading text-base">
+            Copyright & Design 2024
+            <span className="text-color-theme"> ©Roiser</span>. All Right
+            Reserved
+          </p>
+        </div>
+      </div>
     </footer>
   );
 };
