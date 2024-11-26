@@ -33,3 +33,18 @@ export const Stores = [
   "Paris",
   "kasWegas",
 ];
+export const ShopCategories = [
+  "New Arrivals",
+  "Best Selling",
+  "Vegetables",
+  "Fresh Meat",
+  "Fresh Seafood",
+];
+
+export const UseFullLinks = [
+  "Privacy Policy",
+  "Return Policy",
+  "Contact Us",
+  "Latest News",
+  "Our Sitemaps",
+];
