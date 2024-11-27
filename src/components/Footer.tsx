@@ -85,7 +85,7 @@ const Footer = () => {
             <h1 className="text-lg font-extrabold">Shop Categories</h1>
             <div className="flex flex-col gap-3">
               {ShopCategories.map((value) => (
-                <p className="text-sm text-color-text-body font-semibold hover:text-color-theme transition-all duration-300 cursor-pointer">
+                <p className="text-sm text-color-text-body font-semibold hover:text-color-theme transition-all duration-300 cursor-pointer cursor-pointer">
                   {value}
                 </p>
               ))}
@@ -98,7 +98,7 @@ const Footer = () => {
             <h1 className="text-lg font-extrabold">Usefull Links</h1>
             <div className="flex flex-col gap-3">
               {UseFullLinks.map((value) => (
-                <p className="text-sm text-color-text-body font-semibold hover:text-color-theme transition-all duration-300">
+                <p className="text-sm text-color-text-body font-semibold hover:text-color-theme transition-all duration-300 cursor-pointer">
                   {value}
                 </p>
               ))}
@@ -131,7 +131,7 @@ const Footer = () => {
       <div className="mt-5 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <h1 className="text-sm font-bold ">Payment System:</h1>
-          <div className="flex gap-2">
+          <div className="flex gap-3">
             <FaCcVisa size={25} />
             <FaCcMastercard size={25} />
             <FaCcPaypal size={25} />

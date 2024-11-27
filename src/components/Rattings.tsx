@@ -5,7 +5,7 @@ import { FaStar } from "react-icons/fa";
  * Rattings component that renders a container for displaying ratings.
  */
 
-const Rattings = ({ ratting }: { ratting: number }) => {
+const Rattings = ({ ratting, color }: { ratting: number; color?: string }) => {
   const length = 5;
   const arr = Array(length).fill(0);
   return (
@@ -14,7 +14,9 @@ const Rattings = ({ ratting }: { ratting: number }) => {
         return (
           <FaStar
             className={`${
-              index >= ratting ? "text-color-text-body" : "text-color-theme"
+              index >= ratting
+                ? "text-color-text-body"
+                : `text-color-theme  ${color ? color : ""}`
             }`}
           />
         );
