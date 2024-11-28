@@ -6,6 +6,8 @@ import Shop from "./pages/Shop";
 import ShopDetail from "./pages/Shop-detail";
 import ShopGrid from "./pages/shop-grid";
 import AboutUs from "./pages/About-us";
+import Faqs from "./pages/Faqs";
+import Login from "./pages/Login";
 
 const App: React.FC = () => {
   const router = createBrowserRouter([
@@ -32,6 +34,14 @@ const App: React.FC = () => {
         {
           path: "/about",
           element: <AboutUs />,
+        },
+        {
+          path: "/faqs",
+          element: <Faqs />,
+        },
+        {
+          path: "/login",
+          element: <Login />,
         },
       ],
     },
