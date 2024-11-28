@@ -78,7 +78,7 @@ const ShopDetail: React.FC = () => {
               All taxes and customs duties included
             </p>
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-7">
             <input
               type="number"
               className="w-[10%] text-center focus:outline-none bg-color-theme text-white text-base"
@@ -94,6 +94,33 @@ const ShopDetail: React.FC = () => {
             isRed={true}
             isWhite={false}
             className=""
+          />
+        </div>
+      </div>
+      <div className="px-2 mt-10">
+        <ul className="flex gap-6 mb-3">
+          <li className="text-lg  text-color-heading font-bold cursor-pointer transition-all duration-300">
+            Description
+          </li>
+        </ul>
+        <hr />
+        <div className="mt-5 grid grid-cols-2 gap-10">
+          <p className="text-color-text-body text-base leading-8">
+            Eget taciti odio cum habitant egestas conubia turpis phasellus, ante
+            parturient donec duis primis nam faucibus augue malesuada venenatis
+            Credibly negotiate emerging materials whereas clicks-and-mortar
+            intellectual capital. Compellingly whiteboard client-centric
+            sourcescross-platform schemas. Distinctively develop future-proof
+            outsourcing without multimedia based portals. Progressively
+            coordinate generation architectures for collaborative solutions.
+            Professionally restore backward-compatible quality vectors before
+            customer directed metrics. Holisticly restore technically sound
+            internal or "organic" sources before client-centered human capital
+            underwhelm holistic mindshare for prospective innovation.
+          </p>
+          <img
+            src="https://html.rrdevs.net/roiser/assets/img/shop/shop-details-img.jpg"
+            alt=""
           />
         </div>
       </div>

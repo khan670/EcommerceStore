@@ -1,4 +1,5 @@
 import { FashionsDataType } from "../Types/HomeType";
+import { CheckBoxDataType } from "../Types/ShopTypes";
 
 export const FashionsData: FashionsDataType[] = [
   {
@@ -97,5 +98,62 @@ export const ShopCardData = [
     totalRattings: 17,
     oldPrice: 2000,
     newPrice: 1500,
+  },
+];
+
+export const sortedBtnData = [
+  "Default Sorting",
+  "Most Popular",
+  "Date",
+  "Trending",
+];
+
+export const CheckBoxData: CheckBoxDataType[] = [
+  {
+    id: 1,
+    text: "Accessories (1)",
+  },
+  {
+    id: 2,
+    text: "Blazers (1)",
+  },
+  {
+    id: 3,
+    text: "Dresser (1)",
+  },
+  {
+    id: 4,
+    text: "Jeans (1)",
+  },
+  {
+    id: 5,
+    text: "Knits (1)",
+  },
+];
+
+export const CheckBoxPrice: CheckBoxDataType[] = [
+  {
+    id: 12,
+    text: "All",
+  },
+  {
+    id: 11,
+    text: "$0 - $50",
+  },
+  {
+    id: 22,
+    text: "$50 - $100",
+  },
+  {
+    id: 334,
+    text: "$100 - $200",
+  },
+  {
+    id: 4423,
+    text: "$200 - $300",
+  },
+  {
+    id: 5312,
+    text: "$300 - $400",
   },
 ];
