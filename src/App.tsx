@@ -5,6 +5,7 @@ import AppLayout from "./pages/AppLayout";
 import Shop from "./pages/Shop";
 import ShopDetail from "./pages/Shop-detail";
 import ShopGrid from "./pages/shop-grid";
+import AboutUs from "./pages/About-us";
 
 const App: React.FC = () => {
   const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const App: React.FC = () => {
         {
           path: "/shop/grid",
           element: <ShopGrid />,
+        },
+        {
+          path: "/about",
+          element: <AboutUs />,
         },
       ],
     },

@@ -9,6 +9,7 @@ import {
 } from "../data/Fashions";
 import ShopCard from "../components/layout/ShopCard";
 import CheckBox from "../components/Inputs/CheckBox";
+import Pagination from "../components/Pagination";
 
 const ShopGrid: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -46,6 +47,9 @@ const ShopGrid: React.FC = () => {
             {FashionsData.map((value) => (
               <ShopCard data={value} />
             ))}
+          </div>
+          <div className="mx-auto">
+            <Pagination />
           </div>
         </div>
         <div className=" w-1/5 flex flex-col gap-5">

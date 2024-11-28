@@ -5,9 +5,16 @@ interface Proptype {
   isRed: boolean;
   isWhite: boolean;
   className?: string;
+  textColor?: string;
 }
 
-const Button: React.FC<Proptype> = ({ text, isRed, isWhite, className }) => {
+const Button: React.FC<Proptype> = ({
+  text,
+  isRed,
+  isWhite,
+  className,
+  textColor,
+}) => {
   return (
     <button
       className={`text-base  py-3 px-6 font-bold ${
@@ -28,7 +35,7 @@ const Button: React.FC<Proptype> = ({ text, isRed, isWhite, className }) => {
           isWhite && "group-hover:text-white text-color-theme"
         } 
       ${isRed && "text-white"}
-      transition-all duration-500 font-semibold`}
+      transition-all duration-500 font-semibold ${textColor}`}
       >
         {text}
       </span>

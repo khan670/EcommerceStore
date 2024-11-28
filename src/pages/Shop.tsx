@@ -1,9 +1,8 @@
 import React from "react";
-import { IoIosArrowForward } from "react-icons/io";
 import ShopCard from "../components/layout/ShopCard";
 import { FashionsData } from "../data/Fashions";
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import PageSection from "../components/layout/PageSection";
+import Pagination from "../components/Pagination";
 
 const Shop: React.FC = () => {
   return (
@@ -19,20 +18,7 @@ const Shop: React.FC = () => {
           );
         })}
       </div>
-      <div className="flex gap-2 mt-10 justify-center">
-        <button className="bg-color-theme text-base px-3 py-2 text-white">
-          1
-        </button>
-        <button className="bg-gray-200 text-sm px-3 py-2 text-black text-center">
-          2
-        </button>
-        <button className="bg-gray-200 text-sm text-black px-3 py-2 text-center">
-          3
-        </button>
-        <button className="bg-color-theme text-sm px-3 py-2 text-center text-white">
-          <MdKeyboardDoubleArrowRight />
-        </button>
-      </div>
+      <Pagination />
     </>
   );
 };
