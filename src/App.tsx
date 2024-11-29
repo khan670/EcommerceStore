@@ -9,6 +9,7 @@ import AboutUs from "./pages/About-us";
 import Faqs from "./pages/Faqs";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Cart from "./pages/Cart";
 
 const App: React.FC = () => {
   const router = createBrowserRouter([
@@ -47,6 +48,10 @@ const App: React.FC = () => {
         {
           path: "/register",
           element: <Register />,
+        },
+        {
+          path: "/cart",
+          element: <Cart />,
         },
       ],
     },

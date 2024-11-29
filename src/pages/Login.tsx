@@ -2,6 +2,7 @@ import React from "react";
 import PageSection from "../components/layout/PageSection";
 import CheckBox from "../components/Inputs/CheckBox";
 import Button from "../components/Buttons/Button";
+import InputField from "../components/Inputs/InputField";
 
 const checkBoxData = {
   id: 0,
@@ -16,24 +17,8 @@ const Login: React.FC = () => {
           Login Into Your Account
         </h1>
         <div className="flex flex-col gap-5 w-3/5 mx-auto mt-10">
-          <div className="flex flex-col gap-1">
-            <label htmlFor="" className="text-sm font-semibold ">
-              Username or email address
-            </label>
-            <input
-              type="text"
-              className="text-sm border border-gray-300 px-2 py-2 focus:outline-none rounded"
-            />
-          </div>
-          <div className="flex flex-col ">
-            <label htmlFor="" className="text-sm font-semibold ">
-              Password*
-            </label>
-            <input
-              type="password"
-              className="text-sm border border-gray-300 px-2 py-2 focus:outline-none rounded"
-            />
-          </div>
+          <InputField label="Username or email address" type="text" />
+          <InputField label="Password" type="password" />
           <CheckBox checkBoxData={checkBoxData} handler={() => {}} />
           <Button text="Login" isRed={true} isWhite={false} />
           <p className="text-color-heading font-bold">
