@@ -3,22 +3,38 @@ import PageSection from "../components/layout/PageSection";
 import CheckBox from "../components/Inputs/CheckBox";
 import Button from "../components/Buttons/Button";
 
-const checkBoxData = {
-  id: 0,
-  text: "Remember Me",
-};
-const Login: React.FC = () => {
+const CheckBoxData = [
+  {
+    id: 0,
+    text: "Subscribe to stay updated with new products and offers!",
+  },
+  {
+    id: 1,
+    text: "I accept the Terms / Privacy Policy",
+  },
+];
+
+const Register: React.FC = () => {
   return (
-    <>
-      <PageSection pageHead="Login" />
+    <div>
+      <PageSection pageHead="Account Register" />
       <div className="bg-color-light-gray py-20 w-1/2 mx-auto my-20 rounded-lg">
         <h1 className="text-center text-3xl text-color-heading font-extrabold">
           Login Into Your Account
         </h1>
-        <div className="flex flex-col gap-5 w-3/5 mx-auto mt-10">
+        <div className="flex flex-col gap-5 w-4/6 mx-auto mt-10">
           <div className="flex flex-col gap-1">
             <label htmlFor="" className="text-sm font-semibold ">
-              Username or email address
+              Name
+            </label>
+            <input
+              type="text"
+              className="text-sm border border-gray-300 px-2 py-2 focus:outline-none rounded"
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="" className="text-sm font-semibold ">
+              Email Address*
             </label>
             <input
               type="text"
@@ -34,15 +50,17 @@ const Login: React.FC = () => {
               className="text-sm border border-gray-300 px-2 py-2 focus:outline-none rounded"
             />
           </div>
-          <CheckBox checkBoxData={checkBoxData} handler={() => {}} />
+          {CheckBoxData.map((value) => (
+            <CheckBox checkBoxData={value} handler={() => {}} key={value.id} />
+          ))}
           <Button text="Login" isRed={true} isWhite={false} />
           <p className="text-color-heading font-bold">
-            Lost the Last Password ?
+            Already have an account? Log in
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default Login;
+export default Register;

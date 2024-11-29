@@ -8,6 +8,7 @@ import ShopGrid from "./pages/shop-grid";
 import AboutUs from "./pages/About-us";
 import Faqs from "./pages/Faqs";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const App: React.FC = () => {
   const router = createBrowserRouter([
@@ -42,6 +43,10 @@ const App: React.FC = () => {
         {
           path: "/login",
           element: <Login />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
         },
       ],
     },
