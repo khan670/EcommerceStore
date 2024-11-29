@@ -10,6 +10,8 @@ import Faqs from "./pages/Faqs";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import Contact from "./pages/Contact";
 
 const App: React.FC = () => {
   const router = createBrowserRouter([
@@ -52,6 +54,14 @@ const App: React.FC = () => {
         {
           path: "/cart",
           element: <Cart />,
+        },
+        {
+          path: "/checkout",
+          element: <Checkout />,
+        },
+        {
+          path: "/contact",
+          element: <Contact />,
         },
       ],
     },

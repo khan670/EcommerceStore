@@ -1,7 +1,7 @@
 import React from "react";
 import PageSection from "../components/layout/PageSection";
-import { CiCircleRemove } from "react-icons/ci";
 import { MdOutlineCancel } from "react-icons/md";
+import Button from "../components/Buttons/Button";
 
 const Cart: React.FC = () => {
   return (
@@ -52,24 +52,32 @@ const Cart: React.FC = () => {
             </tbody>
           </table>
         </div>
-        <div className="bg-color-light-gray w-[30%] rounded-lg border border-gray-300">
-          <div className="p-5">
-            <h1 className="font-extrabold text-lg">Cart Totals</h1>
+        <div className=" w-[30%] ">
+          <div className="bg-color-light-gray rounded-lg border border-gray-300">
+            <div className="p-5">
+              <h1 className="font-extrabold text-lg">Cart Totals</h1>
+            </div>
+            <hr />
+            <div className="p-5 flex justify-between items-center">
+              <h1 className="font-semibold text-color-text-body text-lg">
+                Subtotal
+              </h1>
+              <h1 className="font-bold text-base ">$1100.00</h1>
+            </div>
+            <hr />
+            <div className="p-5 flex justify-between items-center">
+              <h1 className="font-semibold text-color-text-body text-lg">
+                Total
+              </h1>
+              <h1 className="font-bold text-base ">$1100.00</h1>
+            </div>
           </div>
-          <hr />
-          <div className="p-5 flex justify-between items-center">
-            <h1 className="font-semibold text-color-text-body text-lg">
-              Subtotal
-            </h1>
-            <h1 className="font-bold text-base ">$1100.00</h1>
-          </div>
-          <hr />
-          <div className="p-5 flex justify-between items-center">
-            <h1 className="font-semibold text-color-text-body text-lg">
-              Total
-            </h1>
-            <h1 className="font-bold text-base ">$1100.00</h1>
-          </div>
+          <Button
+            text="Proceed To Checkout"
+            isRed={true}
+            isWhite={false}
+            className="mt-5"
+          />
         </div>
       </div>
     </div>

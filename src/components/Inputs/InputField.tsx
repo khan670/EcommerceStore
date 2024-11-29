@@ -1,13 +1,14 @@
 import React from "react";
 
 interface InputFieldProps {
-  label: string;
+  label?: string;
   type: string;
+  className?: string;
 }
 
-const InputField: React.FC<InputFieldProps> = ({ label, type }) => {
+const InputField: React.FC<InputFieldProps> = ({ label, type, className }) => {
   return (
-    <div className="flex flex-col gap-1">
+    <div className={`flex flex-col gap-1 ${className}`}>
       <label htmlFor="" className="text-sm font-semibold ">
         {label}
       </label>
