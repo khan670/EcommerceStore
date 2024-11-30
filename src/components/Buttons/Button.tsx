@@ -6,6 +6,7 @@ interface Proptype {
   isWhite: boolean;
   className?: string;
   textColor?: string;
+  handler?: () => void;
 }
 
 const Button: React.FC<Proptype> = ({
@@ -14,6 +15,7 @@ const Button: React.FC<Proptype> = ({
   isWhite,
   className,
   textColor,
+  handler,
 }) => {
   return (
     <button
@@ -22,6 +24,7 @@ const Button: React.FC<Proptype> = ({
       } ${
         isRed && "bg-color-theme text-white"
       }  rounded relative group overflow-hidden ${className}`}
+      onClick={handler}
     >
       <div
         className={`absolute top-0 right-full w-full h-full  ${

@@ -1,7 +1,12 @@
 import React from "react";
 import Button from "../../Buttons/Button";
+import { useNavigate } from "react-router-dom";
 
 const Hero: React.FC = () => {
+  const navigate = useNavigate();
+  const handleShopPage = () => {
+    navigate("/shop");
+  };
   return (
     <div className="bg-red-50 relative overflow-hidden -top-11">
       <img
@@ -36,7 +41,12 @@ const Hero: React.FC = () => {
               $320.00
             </span>
           </p>
-          <Button text="View Collection" isRed={true} isWhite={false} />
+          <Button
+            text="View Collection"
+            isRed={true}
+            isWhite={false}
+            handler={handleShopPage}
+          />
         </div>
       </div>
     </div>

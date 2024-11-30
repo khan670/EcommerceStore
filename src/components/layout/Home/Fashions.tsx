@@ -1,11 +1,13 @@
 import Slider from "react-slick";
-import { FashionsData } from "../../../data/Fashions";
 import Heading from "../../Heading";
 import ShopCard from "../ShopCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useRef } from "react";
 import { IoMdArrowBack, IoMdArrowForward } from "react-icons/io";
+import { getAllProducts } from "../../../api/Product";
+import { useQuery } from "@tanstack/react-query";
+import { ProductType } from "../../../Types/ShopTypes";
 const Fashions = () => {
   const refs = useRef<Slider>(null);
   const settings = {
@@ -18,6 +20,12 @@ const Fashions = () => {
     ltr: true,
     arrows: true,
   };
+  const query = useQuery({
+    queryKey: ["products"],
+    queryFn: getAllProducts,
+  });
+  const productData = query.data;
+  if (query.isLoading) return <>loading</>;
   return (
     <div className="mt-16 px-2 overflow-hidden">
       <div className="flex justify-between items-center mb-3">
@@ -44,9 +52,9 @@ const Fashions = () => {
       </div>
       <hr />
       <Slider ref={refs} {...settings} className="mt-10">
-        {FashionsData.map((value) => (
-          <ShopCard data={value} />
-        ))}
+        {productData.map((value: ProductType, index: number) => {
+          if (index <= 5) return <ShopCard data={value} />;
+        })}
       </Slider>
     </div>
   );

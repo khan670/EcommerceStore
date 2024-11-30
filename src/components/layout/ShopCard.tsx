@@ -2,14 +2,41 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { IoCartOutline, IoEyeOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import Rattings from "../Rattings";
-import { FashionsDataType } from "../../Types/HomeType";
+import { ProductType } from "../../Types/ShopTypes";
 
-const ShopCard = ({ data }: { data: FashionsDataType }) => {
+const ShopCard = ({ data }: { data: ProductType }) => {
+  const randomNumber = Math.floor(Math.random() * 6);
+  const imgUrls: string[] = [];
+  if (Array.isArray(data.images)) {
+    data.images.forEach((items) => {
+      try {
+        if (items) {
+          const parsedImages = JSON.parse(items);
+          if (Array.isArray(parsedImages) && parsedImages[0]) {
+            imgUrls.push(parsedImages[0]);
+          } else {
+            imgUrls.push(parsedImages);
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    });
+  }
+  const defaultImage = "/fashion-4.png";
+  const displayImage =
+    imgUrls.length > 0
+      ? imgUrls[0]
+      : Array.isArray(data.images) && data.images[0]
+      ? data.images[0]
+      : defaultImage;
+  // const imgUrl = JSON.parse(data.images[0]);
+  // console.log(imgUrl);
   return (
     <div className="border border-gray-300 rounded-lg group cursor-pointer relative overflow-hidden bg-white">
       <div className="relative overflow-hidden ">
         <img
-          src={data.imgUrl}
+          src={displayImage}
           alt=""
           className="group-hover:scale-105 transform transition-all duration-300"
         />
@@ -34,17 +61,18 @@ const ShopCard = ({ data }: { data: FashionsDataType }) => {
           to=""
           className="hover:text-color-theme text-lg font-bold text-color-heading transition-all duration-300"
         >
-          Monica Diara Party Dress
+          {data.title}
         </Link>
         <div className="flex gap-2 items-center">
-          <Rattings ratting={data.rating} />({data.totalRattings} Reviews)
+          <Rattings ratting={randomNumber} />
+          (Reviews)
         </div>
         <div className="flex gap-2">
           <h1 className="line-through text-gray-400 font-semibold text-base">
-            $ {data.oldPrice}.00
+            $ {data.price + 10}.00
           </h1>
           <h1 className=" text-color-theme font-bold text-base">
-            $ {data.newPrice}.00
+            $ {data.price}.00
           </h1>
         </div>
       </div>

@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import PageSection from "../components/layout/PageSection";
 import { IoIosArrowDown } from "react-icons/io";
-import {
-  CheckBoxData,
-  CheckBoxPrice,
-  FashionsData,
-  sortedBtnData,
-} from "../data/Fashions";
+import { CheckBoxData, CheckBoxPrice, sortedBtnData } from "../data/Fashions";
 import ShopCard from "../components/layout/ShopCard";
 import CheckBox from "../components/Inputs/CheckBox";
 import Pagination from "../components/Pagination";
+import { useQuery } from "@tanstack/react-query";
+import { getAllProducts } from "../api/Product";
+import { ProductType } from "../Types/ShopTypes";
 
 const ShopGrid: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const query = useQuery({
+    queryKey: ["products"],
+    queryFn: getAllProducts,
+  });
+  const productData = query.data;
   return (
     <div>
       <PageSection pageHead="Shop Grid" />
@@ -44,7 +47,7 @@ const ShopGrid: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-3 mt-5 gap-5 ">
-            {FashionsData.map((value) => (
+            {productData.map((value: ProductType) => (
               <ShopCard data={value} />
             ))}
           </div>

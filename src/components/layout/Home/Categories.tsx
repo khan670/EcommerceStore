@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import { CategoryData, discountOffers } from "../../../data/Categories";
+import { discountOffers } from "../../../data/Categories";
 import { IoMdArrowBack, IoMdArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { BsPlus } from "react-icons/bs";
@@ -8,6 +8,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Heading from "../../Heading";
+import { useQuery } from "@tanstack/react-query";
+import { getCategories } from "../../../api/Categories";
+import { CategoryType } from "../../../Types/ShopTypes";
 const Categories: React.FC = () => {
   const sliderRef = useRef<Slider>(null);
   const settings = {
@@ -20,6 +23,12 @@ const Categories: React.FC = () => {
     rtl: true,
     arrows: true,
   };
+  const query = useQuery({
+    queryKey: ["category"],
+    queryFn: getCategories,
+  });
+
+  const categories = query.data;
   return (
     <>
       <div className="px-2 overflow-hidden mt-9">
@@ -48,14 +57,17 @@ const Categories: React.FC = () => {
         <hr />
 
         <Slider {...settings} ref={sliderRef} className="mt-16 ">
-          {CategoryData.map((value) => (
-            <div className="bg-gray-200 p-2 rounded flex flex-col gap-4 hover:bg-color-theme group hover:text-white cursor-pointer transition-all duration-300">
-              <img src={value.imgUrl} alt="" />
-              <p className="uppercase mt-2 text-center font-bold text-color-heading group-hover:text-white ">
-                {value.content}
-              </p>
-            </div>
-          ))}
+          {categories.map((value: CategoryType, index: number) => {
+            if (index <= 4)
+              return (
+                <div className="bg-gray-200 p-2 rounded flex flex-col gap-4 hover:bg-color-theme group hover:text-white cursor-pointer transition-all duration-300">
+                  <img src={value.image} alt="" className="rounded" />
+                  <p className="uppercase mt-2 text-center font-bold text-color-heading group-hover:text-white ">
+                    {value.name}
+                  </p>
+                </div>
+              );
+          })}
         </Slider>
       </div>
       <div className="mt-32 grid grid-cols-3 gap-6">

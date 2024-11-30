@@ -3,9 +3,13 @@ import { BsTelephone } from "react-icons/bs";
 import { IoHeartOutline } from "react-icons/io5";
 import { PiShoppingCartSimple } from "react-icons/pi";
 import { HeaderLinks, NavigationData, StoreInfo } from "../../data/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header: React.FC = () => {
+  const navigate = useNavigate();
+  const handleCartPage = () => {
+    navigate("/cart");
+  };
   return (
     <header>
       <div className="bg-color-theme py-5 px-3 flex justify-between ">
@@ -70,8 +74,14 @@ const Header: React.FC = () => {
               </span>
             </div>
             <div className="flex gap-2 items-center px-3">
-              <span className="text-2xl inline-block text-black bg-gray-200 p-3 rounded-full hover:bg-color-theme hover:text-white transition-all duration-300 cursor-pointer relative">
+              <span
+                className="text-2xl inline-block text-black bg-gray-200 p-3 rounded-full hover:bg-color-theme hover:text-white transition-all duration-300 cursor-pointer relative"
+                onClick={handleCartPage}
+              >
                 <PiShoppingCartSimple size={20} />
+                <p className=" absolute text-xs px-1 text-white border border-gray-300 top-0 right-0  rounded-full bg-color-theme">
+                  2
+                </p>
               </span>
               <div>
                 <p className="text-start text-sm text-color-text-body font-medium">
@@ -89,7 +99,11 @@ const Header: React.FC = () => {
         <div className="flex-1 bg-color-heading py-4 rounded-s-lg px-5 flex items-center">
           <ul className="flex gap-10 text-sm font-bold text-white uppercase items-center">
             {NavigationData.map((item) => (
-              <Link to={item.link} key={item.id}>
+              <Link
+                to={item.link}
+                key={item.id}
+                className="hover:text-color-theme transition-all duration-300"
+              >
                 {item.title}
               </Link>
             ))}

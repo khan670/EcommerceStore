@@ -52,22 +52,27 @@ export const NavigationData = [
   },
   {
     id: 2,
-    title: "women",
-    link: "/shop/2311",
+    title: "contact",
+    link: "/contact",
   },
   {
     id: 3,
-    title: "pages",
-    link: "/",
+    title: "Shop Grid",
+    link: "/shop/grid",
   },
   {
     id: 4,
-    title: "blog",
-    link: "/",
+    title: "login",
+    link: "/login",
   },
   {
     id: 5,
-    title: "contact",
-    link: "/",
+    title: "Register",
+    link: "/register",
+  },
+  {
+    id: 6,
+    title: "Faqs",
+    link: "/faqs",
   },
 ];

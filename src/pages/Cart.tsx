@@ -42,7 +42,7 @@ const Cart: React.FC = () => {
                     <td className="px-4 py-4 text-center">
                       <input
                         type="number"
-                        className="px-4 py-4 w-2/6 mx-auto bg-transparent border border-gray-300 rounded focus:outline-none"
+                        className="px-4 py-4 w-2/6 mx-auto bg-transparent border border-gray-300 rounded focus:outline-none text-center"
                       />
                     </td>
                     <td className="px-4 py-4">$230.50</td>

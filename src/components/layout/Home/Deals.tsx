@@ -1,9 +1,16 @@
-import { ShopCardData } from "../../../data/Fashions";
 import ShopCard from "../ShopCard";
 import Button from "../../Buttons/Button";
 import { LuBadgePercent } from "react-icons/lu";
+import { useQuery } from "@tanstack/react-query";
+import { getAllProducts } from "../../../api/Product";
+import { ProductType } from "../../../Types/ShopTypes";
 
 const Deals = () => {
+  const query = useQuery({
+    queryKey: ["products"],
+    queryFn: getAllProducts,
+  });
+  const productData = query.data;
   return (
     <div className="bg-gray-100 relative py-10 px-20">
       <div className="absolute bottom-0 left-0 ">
@@ -30,10 +37,10 @@ const Deals = () => {
           </div>
           <Button text="View All Collection" isRed={false} isWhite={true} />
         </div>
-        <div className="flex  gap-5">
-          {ShopCardData.map((value) => (
-            <ShopCard data={value} />
-          ))}
+        <div className="flex  gap-5 w-3/5">
+          {productData.map((value: ProductType, index: number) => {
+            if (index <= 1) return <ShopCard data={value} />;
+          })}
         </div>
       </div>
     </div>
