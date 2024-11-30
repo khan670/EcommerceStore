@@ -29,6 +29,7 @@ const Categories: React.FC = () => {
   });
 
   const categories = query.data;
+  if (query.isLoading) return <h1>loading...</h1>;
   return (
     <>
       <div className="px-2 overflow-hidden mt-9">

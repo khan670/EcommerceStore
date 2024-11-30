@@ -6,16 +6,24 @@ import ShopCard from "../components/layout/ShopCard";
 import CheckBox from "../components/Inputs/CheckBox";
 import Pagination from "../components/Pagination";
 import { useQuery } from "@tanstack/react-query";
-import { getAllProducts } from "../api/Product";
+import { getLimitedProduct } from "../api/Product";
 import { ProductType } from "../Types/ShopTypes";
+import { useSearchParams } from "react-router-dom";
 
 const ShopGrid: React.FC = () => {
+  const [searchParams] = useSearchParams();
+  const page = Number(searchParams.get("page") || 1);
+  const totalItemsPerpage = 10;
+  const start = (page - 1) * totalItemsPerpage;
+  const end = page * totalItemsPerpage;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const query = useQuery({
-    queryKey: ["products"],
-    queryFn: getAllProducts,
+    queryKey: ["products", start, end],
+    queryFn: () => getLimitedProduct(start, end),
   });
+
   const productData = query.data;
+  if (query.isLoading) return <>loading...</>;
   return (
     <div>
       <PageSection pageHead="Shop Grid" />
@@ -52,7 +60,7 @@ const ShopGrid: React.FC = () => {
             ))}
           </div>
           <div className="mx-auto">
-            <Pagination />
+            <Pagination totalPages={10} />
           </div>
         </div>
         <div className=" w-1/5 flex flex-col gap-5">

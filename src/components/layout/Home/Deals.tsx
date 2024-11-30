@@ -11,6 +11,7 @@ const Deals = () => {
     queryFn: getAllProducts,
   });
   const productData = query.data;
+  if (query.isLoading) return <h1>loading...</h1>;
   return (
     <div className="bg-gray-100 relative py-10 px-20">
       <div className="absolute bottom-0 left-0 ">
