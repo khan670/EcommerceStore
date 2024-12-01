@@ -1,7 +1,7 @@
 import React from "react";
 import { sponsersImgUrl } from "../../../data/Home";
 
-const Sponsers = () => {
+const Sponsers: React.FC = () => {
   return (
     <div className="grid grid-cols-5 my-10 border-t border-t-gray-300">
       {sponsersImgUrl.map((value) => (

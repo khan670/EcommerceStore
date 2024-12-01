@@ -4,27 +4,23 @@ import { useSearchParams } from "react-router-dom";
 
 interface PropType {
   totalPages?: number;
+  itemsPerPage?: number;
 }
 
 const Pagination: React.FC<PropType> = ({ totalPages }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [params, setParams] = useSearchParams();
-  const handleSearchParams = () => {
-    const newParams = new URLSearchParams(params);
-    newParams.set("page", `${currentPage}`);
-    setParams(newParams);
+  const [, setParams] = useSearchParams();
+  const handleSearchParams = (page: number) => {
+    setParams({ page: String(page) });
   };
   const handleNextPage = () => {
-    if (totalPages === currentPage) {
-      setCurrentPage(1);
-      return;
-    }
-    setCurrentPage((prev) => prev + 1);
-    handleSearchParams();
+    const nextPage = currentPage < Number(totalPages) ? currentPage + 1 : 1;
+    setCurrentPage(nextPage);
+    handleSearchParams(nextPage);
   };
   const handleBtnClick = (pageNo: number) => {
     setCurrentPage(pageNo);
-    handleSearchParams();
+    handleSearchParams(pageNo);
   };
   return (
     <div className="flex gap-2 mt-10 justify-center">
@@ -40,12 +36,6 @@ const Pagination: React.FC<PropType> = ({ totalPages }) => {
           {index + 1}
         </button>
       ))}
-      {/* <button className="bg-gray-200 text-sm px-3 py-2 text-black text-center">
-        2
-      </button>
-      <button className="bg-gray-200 text-sm text-black px-3 py-2 text-center">
-        3
-      </button> */}
       <button
         className="bg-color-theme text-sm px-3 py-2 text-center text-white"
         onClick={handleNextPage}

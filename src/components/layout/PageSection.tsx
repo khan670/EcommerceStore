@@ -1,7 +1,10 @@
 import React from "react";
 import { IoIosArrowForward } from "react-icons/io";
 
-const PageSection = ({ pageHead }: { pageHead: string }) => {
+interface PropType {
+  pageHead: string;
+}
+const PageSection: React.FC<PropType> = ({ pageHead }) => {
   return (
     <div className="bg-gray-200 relative py-20 px-3 overflow-hidden">
       <img

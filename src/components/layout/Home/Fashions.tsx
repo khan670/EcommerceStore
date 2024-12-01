@@ -21,11 +21,11 @@ const Fashions = () => {
     arrows: true,
   };
   const query = useQuery({
-    queryKey: ["products"],
+    queryKey: ["pagination"],
     queryFn: getAllProducts,
   });
   const productData = query.data;
-  if (query.isLoading) return <>loading</>;
+
   return (
     <div className="mt-16 px-2 overflow-hidden">
       <div className="flex justify-between items-center mb-3">
@@ -51,11 +51,15 @@ const Fashions = () => {
         </div>
       </div>
       <hr />
-      <Slider ref={refs} {...settings} className="mt-10">
-        {productData.map((value: ProductType, index: number) => {
-          if (index <= 5) return <ShopCard data={value} />;
-        })}
-      </Slider>
+      {query.isLoading ? (
+        <span className="loader"></span>
+      ) : (
+        <Slider ref={refs} {...settings} className="mt-10">
+          {productData.map((value: ProductType, index: number) => {
+            if (index <= 5) return <ShopCard data={value} />;
+          })}
+        </Slider>
+      )}
     </div>
   );
 };

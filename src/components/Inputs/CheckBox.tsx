@@ -1,41 +1,45 @@
-import React, { useState } from "react";
+import React from "react";
 import { BiSolidCheckboxChecked } from "react-icons/bi";
-import { CheckBoxDataType } from "../../Types/ShopTypes";
+import { CategoryType } from "../../Types/ShopTypes";
 import { GoSquare } from "react-icons/go";
 
 interface CheckBoxProps {
-  checkBoxData: CheckBoxDataType;
-  handler: (id: number) => void;
+  checkBoxData: CategoryType;
+  handler: (id: number | string | undefined) => void;
+  checked?: number | string;
 }
 
-const CheckBox: React.FC<CheckBoxProps> = ({ checkBoxData, handler }) => {
-  const [checked, setIsChecked] = useState<boolean>(false);
-
+const CheckBox: React.FC<CheckBoxProps> = ({
+  checkBoxData,
+  handler,
+  checked,
+}) => {
+  const checkedValue = checkBoxData.id === checked;
   return (
     <div className="flex items-center text-base text-color-heading ">
       <input
         type="checkbox"
         className="hidden"
-        onChange={() => {
-          setIsChecked((prev) => !prev);
-          handler(checkBoxData.id);
-        }}
-        id={checkBoxData.id.toString()}
-        checked={checked}
+        onChange={() => handler(checkBoxData?.id)}
+        id={checkBoxData?.id?.toString()}
+        checked={checkedValue}
       />
       <span
         className={`${
-          checked ? "text-color-theme" : "text-color-text-body"
+          checkedValue ? "text-color-theme" : "text-color-text-body"
         } inline-block  rounded-full`}
       >
-        {checked ? (
+        {checkedValue ? (
           <BiSolidCheckboxChecked size={25} />
         ) : (
           <GoSquare size={25} />
         )}
       </span>
-      <label htmlFor={checkBoxData.id.toString()} className=" ml-2 font-medium">
-        {checkBoxData.text}
+      <label
+        htmlFor={checkBoxData?.id?.toString()}
+        className=" ml-2 font-medium"
+      >
+        {checkBoxData.name}
       </label>
     </div>
   );

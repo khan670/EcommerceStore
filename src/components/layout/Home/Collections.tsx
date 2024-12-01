@@ -1,8 +1,7 @@
 import React from "react";
-import Heading from "../../Heading";
 import { CollectionsData } from "../../../data/Fashions";
 
-const Collections = () => {
+const Collections: React.FC = () => {
   return (
     <div className="grid grid-cols-2 px-4 gap-4 mt-10">
       {CollectionsData.map((value, index) => (

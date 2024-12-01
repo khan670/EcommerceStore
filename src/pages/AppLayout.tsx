@@ -3,7 +3,7 @@ import Header from "../components/layout/Header";
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 
-const AppLayout = () => {
+const AppLayout: React.FC = () => {
   return (
     <>
       <Header />

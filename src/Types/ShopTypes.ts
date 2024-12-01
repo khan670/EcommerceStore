@@ -1,6 +1,6 @@
 export interface CheckBoxDataType {
   id: number;
-  text: string;
+  name: string | number;
 }
 export interface ProductType {
   images: string[];
@@ -9,6 +9,7 @@ export interface ProductType {
   price: number;
 }
 export interface CategoryType {
-  image: string;
+  image?: string;
+  id?: number | string;
   name: string;
 }

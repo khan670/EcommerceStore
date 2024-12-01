@@ -58,7 +58,7 @@ const ShopCard = ({ data }: { data: ProductType }) => {
       <div className="p-6 flex flex-col gap-2">
         <p className="text-xs text-gray-400 font-semibold ">LEVI'S COTTON</p>
         <Link
-          to=""
+          to={`/shop/${data.id}`}
           className="hover:text-color-theme text-lg font-bold text-color-heading transition-all duration-300"
         >
           {data.title}

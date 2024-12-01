@@ -1,6 +1,11 @@
 import React from "react";
 
-const Heading = ({ text, className }: { text: string; className?: string }) => {
+interface PropType {
+  text: string;
+  className?: string;
+}
+
+const Heading: React.FC<PropType> = ({ text, className }) => {
   return (
     <h1
       className={`text-4xl font-extrabold text-color-heading uppercase ${className}`}

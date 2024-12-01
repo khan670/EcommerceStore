@@ -7,11 +7,11 @@ import InputField from "../components/Inputs/InputField";
 const CheckBoxData = [
   {
     id: 0,
-    text: "Subscribe to stay updated with new products and offers!",
+    name: "Subscribe to stay updated with new products and offers!",
   },
   {
     id: 1,
-    text: "I accept the Terms / Privacy Policy",
+    name: "I accept the Terms / Privacy Policy",
   },
 ];
 

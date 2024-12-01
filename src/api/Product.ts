@@ -21,3 +21,16 @@ export const getLimitedProduct = async (
   const response = await data.json();
   return response;
 };
+
+// get Product by category and price
+export const getProductsByCategory = async (
+  categoryId: number | string | undefined,
+  startProduct: number,
+  endProduct: number
+) => {
+  const data = await fetch(
+    `https://api.escuelajs.co/api/v1/products?offset=${startProduct}&limit=${endProduct}&categoryId=${categoryId}`
+  );
+  const response = await data.json();
+  return response;
+};

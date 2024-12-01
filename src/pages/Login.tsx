@@ -6,7 +6,7 @@ import InputField from "../components/Inputs/InputField";
 
 const checkBoxData = {
   id: 0,
-  text: "Remember Me",
+  name: "Remember Me",
 };
 const Login: React.FC = () => {
   return (

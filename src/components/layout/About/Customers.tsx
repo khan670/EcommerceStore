@@ -2,7 +2,7 @@ import React from "react";
 import Heading from "../../Heading";
 import Rattings from "../../Rattings";
 
-const Customers = () => {
+const Customers: React.FC = () => {
   return (
     <div className="mt-10 bg-color-theme px-2 py-10">
       <Heading text="Happy Customers" className="text-white text-center" />

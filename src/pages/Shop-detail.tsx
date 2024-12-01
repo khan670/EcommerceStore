@@ -6,42 +6,53 @@ import Button from "../components/Buttons/Button";
 import { GoArrowSwitch } from "react-icons/go";
 import { MdOutlineLocalShipping } from "react-icons/md";
 import { CiCircleCheck } from "react-icons/ci";
-
-const imgUrls = [
-  "/fashion-3.png",
-  "/fashion-2.png",
-  "/fashion-1.png",
-  "/fashion-1.png",
-];
+import { useQuery } from "@tanstack/react-query";
+import { getSingleProduct } from "../api/Product";
+import { useParams } from "react-router-dom";
 
 const ShopDetail: React.FC = () => {
+  const [imgIndex, setImgIndex] = useState(0);
+  const params: string | any = useParams();
   const [count, setCount] = useState(1);
+  const query = useQuery({
+    queryKey: ["product"],
+    queryFn: () => getSingleProduct(params.shopId),
+  });
+  const productData = query.data;
+  console.log(productData);
+
+  if (query.isLoading) return <span className="loader mx-auto"></span>;
   return (
     <>
       <PageSection pageHead="Shope Details" />
       <div className="mt-5 grid grid-cols-2 gap-10 px-2">
         <div className={"grid grid-cols-[20%_80%] gap-4"}>
           <div className="flex flex-col gap-4">
-            {imgUrls.map((value, index) => (
+            {productData.images.map((value: string, index: number) => (
               <img
                 src={value}
                 className={`${
-                  index === 0 && "border border-color-theme"
-                } rounded`}
+                  index === imgIndex && "border border-color-theme"
+                } rounded transition-all duration-300 cursor-pointer`}
+                onClick={() => setImgIndex(index)}
               />
             ))}
           </div>
           <div className="h-full flex overflow-hidden">
-            <img src="/shop-5.jpg" alt="" className="object-cover rounded" />
+            <img
+              src={productData.images[imgIndex]}
+              alt=""
+              className="object-cover rounded"
+            />
           </div>
         </div>
         <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-2">
             <h1 className="text-color-theme text-sm font-bold uppercase ">
-              Modern Dress
+              {productData.category.name}
             </h1>
             <p className="text-color-heading text-3xl font-bold">
-              Poncho Sweater International
+              {productData.title}
             </p>
 
             <div className="flex gap-1 items-center">
@@ -52,8 +63,10 @@ const ShopDetail: React.FC = () => {
             </div>
           </div>
           <div className="flex gap-2 text-xl font-semibold">
-            <h1 className=" text-color-heading">$260.00 </h1>
-            <h1 className="text-color-text-body line-through">$360.00</h1>
+            <h1 className=" text-color-heading">${productData.price}.00 </h1>
+            <h1 className="text-color-text-body line-through">
+              ${productData.price + 10}.00
+            </h1>
           </div>
           <hr />
           <p className="text-color-text-body text-base">
@@ -106,17 +119,7 @@ const ShopDetail: React.FC = () => {
         <hr />
         <div className="mt-5 grid grid-cols-2 gap-10">
           <p className="text-color-text-body text-base leading-8">
-            Eget taciti odio cum habitant egestas conubia turpis phasellus, ante
-            parturient donec duis primis nam faucibus augue malesuada venenatis
-            Credibly negotiate emerging materials whereas clicks-and-mortar
-            intellectual capital. Compellingly whiteboard client-centric
-            sourcescross-platform schemas. Distinctively develop future-proof
-            outsourcing without multimedia based portals. Progressively
-            coordinate generation architectures for collaborative solutions.
-            Professionally restore backward-compatible quality vectors before
-            customer directed metrics. Holisticly restore technically sound
-            internal or "organic" sources before client-centered human capital
-            underwhelm holistic mindshare for prospective innovation.
+            {productData?.description}
           </p>
           <img
             src="https://html.rrdevs.net/roiser/assets/img/shop/shop-details-img.jpg"

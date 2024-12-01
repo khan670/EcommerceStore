@@ -4,8 +4,11 @@ import { FaStar } from "react-icons/fa";
 /**
  * Rattings component that renders a container for displaying ratings.
  */
-
-const Rattings = ({ ratting, color }: { ratting: number; color?: string }) => {
+interface PropType {
+  ratting: number;
+  color?: string;
+}
+const Rattings: React.FC<PropType> = ({ ratting, color }) => {
   const length = 5;
   const arr = Array(length).fill(0);
   return (

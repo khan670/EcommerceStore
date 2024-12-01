@@ -111,49 +111,45 @@ export const sortedBtnData = [
 export const CheckBoxData: CheckBoxDataType[] = [
   {
     id: 1,
-    text: "Accessories (1)",
+    name: "Accessories (1)",
   },
   {
     id: 2,
-    text: "Blazers (1)",
+    name: "Blazers (1)",
   },
   {
     id: 3,
-    text: "Dresser (1)",
+    name: "Dresser (1)",
   },
   {
     id: 4,
-    text: "Jeans (1)",
+    name: "Jeans (1)",
   },
   {
     id: 5,
-    text: "Knits (1)",
+    name: "Knits (1)",
   },
 ];
 
 export const CheckBoxPrice: CheckBoxDataType[] = [
   {
-    id: 12,
-    text: "All",
-  },
-  {
     id: 11,
-    text: "$0 - $50",
+    name: 50,
   },
   {
     id: 22,
-    text: "$50 - $100",
+    name: 100,
   },
   {
     id: 334,
-    text: "$100 - $200",
+    name: 200,
   },
   {
     id: 4423,
-    text: "$200 - $300",
+    name: 300,
   },
   {
     id: 5312,
-    text: "$300 - $400",
+    name: 400,
   },
 ];
