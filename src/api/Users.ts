@@ -40,5 +40,6 @@ export const createUser = async (data: AuthenticationType) => {
     body: JSON.stringify(data),
   });
   const result = response.json();
+  localStorage.setItem("user", JSON.stringify(data));
   return result;
 };

@@ -6,6 +6,8 @@ import InputField from "../components/Inputs/InputField";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
+import { Authorization, login } from "../api/Authentication";
 
 const checkBoxData = {
   id: 0,
@@ -17,7 +19,7 @@ const loginFormSchema = z.object({
   password: z
     .string()
     .min(1, "Password is required")
-    .min(8, "Password must be at least 8 characters long"),
+    .min(5, "Password must be at least 8 characters long"),
 });
 
 type FormSchemaType = z.infer<typeof loginFormSchema>;
@@ -30,9 +32,14 @@ const Login: React.FC = () => {
   } = useForm<FormSchemaType>({
     resolver: zodResolver(loginFormSchema),
   });
-  const loginFormSubmition = (data: FormSchemaType) => {
+  const { mutate } = useMutation({
+    mutationFn: login,
+  });
+  const loginFormSubmition = async (data: FormSchemaType) => {
     console.log(data);
-    reset();
+    await reset();
+    await mutate(data);
+    await Authorization();
   };
   return (
     <>

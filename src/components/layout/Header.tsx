@@ -2,13 +2,24 @@ import React from "react";
 import { BsTelephone } from "react-icons/bs";
 import { IoHeartOutline } from "react-icons/io5";
 import { PiShoppingCartSimple } from "react-icons/pi";
-import { HeaderLinks, NavigationData, StoreInfo } from "../../data/Header";
+import { HeaderLinks, NavigationData } from "../../data/Header";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Header: React.FC = () => {
+  const userData = JSON.parse(localStorage.getItem("user") || "{}");
   const navigate = useNavigate();
   const handleCartPage = () => {
     navigate("/cart");
+  };
+  const handleLogout = () => {
+    if (userData.email) {
+      localStorage.removeItem("user");
+      toast.success("Logout successfully");
+      navigate("/");
+    } else {
+      navigate("/login");
+    }
   };
   return (
     <header>
@@ -23,15 +34,21 @@ const Header: React.FC = () => {
         <p className="text-white text-sm font-semibold ">
           Free shipping for all orders of 150$
         </p>
-        <ul className="flex gap-5 text-sm font-bold text-white">
-          {StoreInfo.map((item) =>
-            item.link ? (
-              <Link to={item.link} key={item.id}>
-                {item.title}
-              </Link>
-            ) : (
-              <p>{item.title}</p>
-            )
+        <ul className="flex gap-5 text-sm font-bold text-white items-center">
+          <button
+            className="bg-color-light-gray py-2 px-3 text-color-heading rounded-lg"
+            onClick={handleLogout}
+          >
+            {userData.email ? "Logout" : "Login"}
+          </button>
+          {userData.avatar && (
+            <img
+              src={userData.avatar}
+              alt=""
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
           )}
         </ul>
       </div>
@@ -98,15 +115,22 @@ const Header: React.FC = () => {
       <div className="container mx-auto py-4 flex rounded-lg sticky top-0 z-30 overflow-visible">
         <div className="flex-1 bg-color-heading py-4 rounded-s-lg px-5 flex items-center">
           <ul className="flex gap-10 text-sm font-bold text-white uppercase items-center">
-            {NavigationData.map((item) => (
-              <Link
-                to={item.link}
-                key={item.id}
-                className="hover:text-color-theme transition-all duration-300"
-              >
-                {item.title}
-              </Link>
-            ))}
+            {NavigationData.map((item) => {
+              if (
+                (userData.name && item.title === "Register") ||
+                item.title === "login"
+              )
+                return null;
+              return (
+                <Link
+                  to={item.link}
+                  key={item.id}
+                  className="hover:text-color-theme transition-all duration-300"
+                >
+                  {item.title}
+                </Link>
+              );
+            })}
           </ul>
         </div>
         <div className=" bg-color-theme py-4 px-5 rounded-e-lg flex items-center gap-2">
