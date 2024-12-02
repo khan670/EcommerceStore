@@ -9,8 +9,13 @@ import { CiCircleCheck } from "react-icons/ci";
 import { useQuery } from "@tanstack/react-query";
 import { getSingleProduct } from "../api/Product";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../store/CartSlice";
+import { toast } from "react-toastify";
 
 const ShopDetail: React.FC = () => {
+  const dispatch = useDispatch();
+  const { cartData } = useSelector((state: { cart: any }) => state.cart);
   const [imgIndex, setImgIndex] = useState(0);
   const params: string | any = useParams();
   const [count, setCount] = useState(1);
@@ -20,6 +25,23 @@ const ShopDetail: React.FC = () => {
   });
   const productData = query.data;
   console.log(productData);
+
+  const handleAddToCart = () => {
+    const user = JSON.parse(localStorage.getItem("user")!);
+    if (!user) {
+      toast.error("Please login first");
+      return;
+    }
+    const existingProduct = cartData.find(
+      (item: { id: number }) => item.id === productData.id
+    );
+    if (existingProduct) {
+      toast.error("Product already added to cart");
+      return;
+    }
+    dispatch(addToCart(productData));
+    toast.success("Product added to cart successfully");
+  };
 
   if (query.isLoading) return <span className="loader mx-auto"></span>;
   return (
@@ -98,7 +120,10 @@ const ShopDetail: React.FC = () => {
               value={count}
               onChange={(e) => setCount(Number(e.target.value))}
             />
-            <button className="bg-white border-2 text-color-heading border-color-heading hover:bg-color-heading hover:text-white  rounded-3xl  text-base font-bold px-3 py-3 flex-1 transition-all duration-300">
+            <button
+              className="bg-white border-2 text-color-heading border-color-heading hover:bg-color-heading hover:text-white  rounded-3xl  text-base font-bold px-3 py-3 flex-1 transition-all duration-300"
+              onClick={handleAddToCart}
+            >
               Add to Cart
             </button>
           </div>

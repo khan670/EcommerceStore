@@ -33,7 +33,7 @@ export const Authorization = async () => {
     localStorage.setItem("user", JSON.stringify(data));
     toast.success("Login successfully");
     return data;
-  } catch (error: any) {
+  } catch (error) {
     toast.error(error?.message);
   }
 };

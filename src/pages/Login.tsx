@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { Authorization, login } from "../api/Authentication";
+import { useNavigate } from "react-router-dom";
 
 const checkBoxData = {
   id: 0,
@@ -24,6 +25,7 @@ const loginFormSchema = z.object({
 
 type FormSchemaType = z.infer<typeof loginFormSchema>;
 const Login: React.FC = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -40,6 +42,7 @@ const Login: React.FC = () => {
     await reset();
     await mutate(data);
     await Authorization();
+    navigate("/");
   };
   return (
     <>

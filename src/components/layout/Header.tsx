@@ -5,8 +5,12 @@ import { PiShoppingCartSimple } from "react-icons/pi";
 import { HeaderLinks, NavigationData } from "../../data/Header";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const Header: React.FC = () => {
+  const { cartData, totalPriceWithTax } = useSelector(
+    (state: any) => state.cart
+  );
   const userData = JSON.parse(localStorage.getItem("user") || "{}");
   const navigate = useNavigate();
   const handleCartPage = () => {
@@ -23,8 +27,8 @@ const Header: React.FC = () => {
   };
   return (
     <header>
-      <div className="bg-color-theme py-5 px-3 flex justify-between ">
-        <ul className="flex gap-5 text-sm font-bold text-white capitalize">
+      <div className="bg-color-theme py-5 px-3 flex justify-between items-center ">
+        <ul className="flex gap-5 items-center text-sm font-bold text-white capitalize">
           {HeaderLinks.map((item) => (
             <Link to={item.link} key={item.id}>
               {item.title}
@@ -97,7 +101,7 @@ const Header: React.FC = () => {
               >
                 <PiShoppingCartSimple size={20} />
                 <p className=" absolute text-xs px-1 text-white border border-gray-300 top-0 right-0  rounded-full bg-color-theme">
-                  2
+                  {cartData.length}
                 </p>
               </span>
               <div>
@@ -105,7 +109,7 @@ const Header: React.FC = () => {
                   Your Cart,
                 </p>
                 <p className="text-base -mt-1 text-black font-bold inline-block">
-                  $123,44.00
+                  ${totalPriceWithTax.toFixed(2)}
                 </p>
               </div>
             </div>
