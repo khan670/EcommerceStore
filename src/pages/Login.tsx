@@ -3,12 +3,37 @@ import PageSection from "../components/layout/PageSection";
 import CheckBox from "../components/Inputs/CheckBox";
 import Button from "../components/Buttons/Button";
 import InputField from "../components/Inputs/InputField";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
 const checkBoxData = {
   id: 0,
   name: "Remember Me",
 };
+
+const loginFormSchema = z.object({
+  email: z.string().email("Email must be valid").min(1, "Email is required"),
+  password: z
+    .string()
+    .min(1, "Password is required")
+    .min(8, "Password must be at least 8 characters long"),
+});
+
+type FormSchemaType = z.infer<typeof loginFormSchema>;
 const Login: React.FC = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormSchemaType>({
+    resolver: zodResolver(loginFormSchema),
+  });
+  const loginFormSubmition = (data: FormSchemaType) => {
+    console.log(data);
+    reset();
+  };
   return (
     <>
       <PageSection pageHead="Login" />
@@ -16,15 +41,34 @@ const Login: React.FC = () => {
         <h1 className="text-center text-3xl text-color-heading font-extrabold">
           Login Into Your Account
         </h1>
-        <div className="flex flex-col gap-5 w-3/5 mx-auto mt-10">
-          <InputField label="Username or email address" type="text" />
-          <InputField label="Password" type="password" />
+        <form
+          className="flex flex-col gap-5 w-3/5 mx-auto mt-10"
+          onSubmit={handleSubmit(loginFormSubmition)}
+        >
+          <InputField
+            label="Username or email address"
+            type="text"
+            {...register("email")}
+          />
+          {errors.email && (
+            <p className="text-red-500 text-xs -mt-3">{errors.email.message}</p>
+          )}
+          <InputField
+            label="Password"
+            type="password"
+            {...register("password")}
+          />
+          {errors.password && (
+            <p className="text-red-500 text-xs -mt-3">
+              {errors.password.message}
+            </p>
+          )}
           <CheckBox checkBoxData={checkBoxData} handler={() => {}} />
           <Button text="Login" isRed={true} isWhite={false} />
           <p className="text-color-heading font-bold">
             Lost the Last Password ?
           </p>
-        </div>
+        </form>
       </div>
     </>
   );
