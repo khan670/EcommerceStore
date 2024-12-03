@@ -47,7 +47,7 @@ const Register: React.FC = () => {
   } = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
   });
-  const { mutate } = useMutation({
+  const { mutate, isSuccess } = useMutation({
     mutationFn: createUser,
     onSuccess: () => {
       reset();
@@ -62,6 +62,7 @@ const Register: React.FC = () => {
       avatar: "https://i.imgur.com/yhW6Yw1.jpg",
     };
     mutate(userData);
+    isSuccess && localStorage.setItem("user", JSON.stringify(userData));
     console.log(userData);
   };
   return (

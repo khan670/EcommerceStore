@@ -5,12 +5,17 @@ import { PiShoppingCartSimple } from "react-icons/pi";
 import { HeaderLinks, NavigationData } from "../../data/Header";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../../store/CartSlice";
 
 const Header: React.FC = () => {
-  const { cartData, totalPriceWithTax } = useSelector(
-    (state: any) => state.cart
+  const dispatch = useDispatch();
+  const { cartData } = useSelector((state) => state.cart);
+  const totalPrice = cartData.reduce(
+    (acc: number, item: number) => acc + item.price * item.quantity,
+    0
   );
+
   const userData = JSON.parse(localStorage.getItem("user") || "{}");
   const navigate = useNavigate();
   const handleCartPage = () => {
@@ -19,6 +24,8 @@ const Header: React.FC = () => {
   const handleLogout = () => {
     if (userData.email) {
       localStorage.removeItem("user");
+      localStorage.removeItem("token");
+      dispatch(clearCart());
       toast.success("Logout successfully");
       navigate("/");
     } else {
@@ -58,7 +65,7 @@ const Header: React.FC = () => {
       </div>
       <div className="py-6 bg-[#FFFFFF] px-3 flex items-center gap-5">
         <img src="/logo-1.png" />
-        <div className="border border-gray-300 py-2 px-3 flex items-center  ">
+        {/* <div className="border border-gray-300 py-2 px-3 flex items-center  ">
           <p className="text-sm text-black font-bold border-r border-r-gray-300 px-2">
             All Categories
           </p>
@@ -70,7 +77,7 @@ const Header: React.FC = () => {
           <button className="bg-color-theme text-white py-2 px-3 text-xs uppercase rounded">
             search here
           </button>
-        </div>
+        </div> */}
         <div className="ml-auto">
           <div className="flex items-center gap-1 ">
             <div className="flex gap-2 items-center border-r border-r-gray-300 px-3">
@@ -109,7 +116,7 @@ const Header: React.FC = () => {
                   Your Cart,
                 </p>
                 <p className="text-base -mt-1 text-black font-bold inline-block">
-                  ${totalPriceWithTax.toFixed(2)}
+                  ${totalPrice.toFixed(2)}
                 </p>
               </div>
             </div>

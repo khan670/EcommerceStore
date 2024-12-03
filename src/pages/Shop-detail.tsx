@@ -39,7 +39,11 @@ const ShopDetail: React.FC = () => {
       toast.error("Product already added to cart");
       return;
     }
-    dispatch(addToCart(productData));
+    const productCart = {
+      ...productData,
+      quantity: count,
+    };
+    dispatch(addToCart(productCart));
     toast.success("Product added to cart successfully");
   };
 
@@ -118,7 +122,10 @@ const ShopDetail: React.FC = () => {
               type="number"
               className="w-[10%] text-center focus:outline-none bg-color-theme text-white text-base"
               value={count}
-              onChange={(e) => setCount(Number(e.target.value))}
+              onChange={(e) => {
+                if (Number(e.target.value) < 1) return;
+                setCount(Number(e.target.value));
+              }}
             />
             <button
               className="bg-white border-2 text-color-heading border-color-heading hover:bg-color-heading hover:text-white  rounded-3xl  text-base font-bold px-3 py-3 flex-1 transition-all duration-300"

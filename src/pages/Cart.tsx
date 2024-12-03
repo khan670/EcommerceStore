@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PageSection from "../components/layout/PageSection";
 import { MdOutlineCancel } from "react-icons/md";
 import Button from "../components/Buttons/Button";
@@ -6,16 +6,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCart, removeFromCart } from "../store/CartSlice";
 
 const Cart: React.FC = () => {
+  const userData = JSON.parse(localStorage.getItem("user") || "{}");
   const dispatch = useDispatch();
-  const { cartData, totalPrice, totalPriceWithTax } = useSelector(
-    (state) => state.cart
+  const { cartData, taxPrice } = useSelector((state) => state.cart);
+  const totalPrice = cartData.reduce(
+    (acc: number, item: number) => acc + item.price * item.quantity,
+    0
   );
+  const totalPriceWithTax = totalPrice * (1 + taxPrice / 100);
   const handleClearCart = () => {
     dispatch(clearCart());
   };
   const handleRemoveFromCart = (id: number) => {
     dispatch(removeFromCart(id));
   };
+  if (!userData.email)
+    return (
+      <div className="h-full text-center my-10 text-2xl capitalize font-bold ">
+        please login first
+      </div>
+    );
   return (
     <div className="w-full ">
       <PageSection pageHead="Cart Page" />
@@ -61,15 +71,14 @@ const Cart: React.FC = () => {
                         height={50}
                       />
                     </td>
-                    <td className="px-4 py-4">{value.title}</td>
-                    <td className="px-4 py-4">${value.price}.00</td>
+                    <td className="px-4 py-4 text-center">{value.title}</td>
                     <td className="px-4 py-4 text-center">
-                      <input
-                        type="number"
-                        className="px-4 py-4 w-2/6 mx-auto bg-transparent border border-gray-300 rounded focus:outline-none text-center"
-                      />
+                      ${value.price.toFixed(2)}
                     </td>
-                    <td className="px-4 py-4">$230.50</td>
+                    <td className="px-4 py-4 text-center">{value.quantity}</td>
+                    <td className="px-4 py-4 text-center">
+                      ${value.price * value.quantity.toFixed(2)}
+                    </td>
                   </tr>
                 </>
               ))}
