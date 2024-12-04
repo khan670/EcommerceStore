@@ -9,7 +9,7 @@ const Faq: React.FC<FaqProps> = ({ data }) => {
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
   return (
     <div
-      className="border border-gray-300 py-3 px-5 rounded w-3/6 mx-auto"
+      className="border border-gray-300 py-3 px-5 rounded w-full lg:w-3/6 mx-auto"
       {...getToggleProps()}
     >
       <div className="flex items-center justify-between mb-2">

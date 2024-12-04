@@ -19,6 +19,17 @@ body {
   margin-left: -10px;
   margin-right: -10px;
 }
+/*  */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+/*  */
+.no-sticky {
+  position: relative;
+  top: 24px;
+}
 
 .loader {
   color: #141414;

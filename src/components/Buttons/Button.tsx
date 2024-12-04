@@ -21,7 +21,7 @@ const Button: React.FC<Proptype> = ({
 }) => {
   return (
     <button
-      className={`text-base  py-3 px-6 font-bold ${
+      className={`lg:text-base text-sm  py-3 px-6 font-bold ${
         isWhite && "bg-white text-color-theme"
       } ${
         isRed && "bg-color-theme text-white"

@@ -26,7 +26,7 @@ const Shop: React.FC = () => {
       {query.isLoading ? (
         <span className="loader"></span>
       ) : (
-        <div className="grid grid-cols-4 gap-4 px-2 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-2 mt-16">
           {productData.map((value: ProductType) => {
             return (
               <>
@@ -36,7 +36,7 @@ const Shop: React.FC = () => {
           })}
         </div>
       )}
-      <Pagination totalPages={10} />
+      <Pagination totalPages={5} />
     </>
   );
 };

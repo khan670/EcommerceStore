@@ -9,7 +9,7 @@ const Discount: React.FC = () => {
         <p className="text-sm font-medium uppercase">
           Spring summer 22 women’s collection
         </p>
-        <h1 className="text-7xl w-[70%] font-extrabold ">
+        <h1 className="text-4xl md:text-7xl w-[70%] font-extrabold ">
           -15% Off Discount All Here
         </h1>
         <Button text="View Collection" isRed={false} isWhite={true} />

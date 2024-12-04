@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PageSection from "../components/layout/PageSection";
 import { MdOutlineCancel } from "react-icons/md";
 import Button from "../components/Buttons/Button";
@@ -29,8 +29,8 @@ const Cart: React.FC = () => {
   return (
     <div className="w-full ">
       <PageSection pageHead="Cart Page" />
-      <div className="flex gap-6 mt-10 px-3">
-        <div className="bg-color-light-gray w-[70%] rounded-lg overflow-hidden border border-gray-300">
+      <div className="flex flex-col lg:flex-row gap-6 mt-10 px-3">
+        <div className="bg-color-light-gray w-full lg:w-[70%] rounded-lg overflow-hidden border border-gray-300">
           <button
             className="px-4 py-2 bg-color-theme text-white m-4 border border-gray-300 rounded-lg"
             onClick={handleClearCart}
@@ -85,7 +85,7 @@ const Cart: React.FC = () => {
             </tbody>
           </table>
         </div>
-        <div className=" w-[30%] ">
+        <div className=" lg:w-[30%] w-full ">
           <div className="bg-color-light-gray rounded-lg border border-gray-300">
             <div className="p-5">
               <h1 className="font-extrabold text-lg">Cart Totals</h1>

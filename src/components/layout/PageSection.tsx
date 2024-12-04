@@ -12,8 +12,10 @@ const PageSection: React.FC<PropType> = ({ pageHead }) => {
         alt=""
         className="absolute bottom-0 left-0"
       />
-      <div className="relative z-10 flex justify-between">
-        <h1 className="text-black text-7xl font-extrabold">{pageHead}</h1>
+      <div className="relative z-10 flex justify-between ">
+        <h1 className="text-black sm:text-7xl text-4xl  font-extrabold">
+          {pageHead}
+        </h1>
         <div className="flex gap-1 items-center">
           <p className="text-gray-500 font-semibold text-lg">Home</p>
           <IoIosArrowForward className="text-gray-500" />

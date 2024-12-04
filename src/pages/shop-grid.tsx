@@ -47,8 +47,8 @@ const ShopGrid: React.FC = () => {
   return (
     <div>
       <PageSection pageHead="Shop Grid" />
-      <div className="flex mt-10 gap-3 px-2">
-        <div className="flex flex-col items-start w-4/5">
+      <div className="flex flex-col md:flex-row mt-10 gap-3 px-2">
+        <div className="flex flex-col items-start w-full md:w-4/5">
           {query.isLoading ? (
             <span className="loader mx-auto mt-9"></span>
           ) : (
@@ -81,21 +81,19 @@ const ShopGrid: React.FC = () => {
               {query.isLoading ? (
                 <span className="loader"></span>
               ) : (
-                <div className="grid grid-cols-3 mt-5 gap-5 ">
+                <div className="grid sm:grid-cols-2 md:grid-cols-3 grid-cols-1  mt-5 gap-5 ">
                   {productData.map((value: ProductType) => (
                     <ShopCard data={value} />
                   ))}
                 </div>
               )}
               <div className="mx-auto">
-                <Pagination
-                  totalPages={productData.length / totalItemsPerpage}
-                />
+                <Pagination totalPages={5} />
               </div>
             </>
           )}
         </div>
-        <div className=" w-1/5 flex flex-col gap-5">
+        <div className=" w-full md:w-1/5 flex flex-col gap-5">
           <div className="border border-gray-300 rounded-lg p-4">
             <h1 className="text-lg font-extrabold  text-color-heading mb-2">
               Categories

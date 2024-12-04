@@ -47,38 +47,42 @@ const Login: React.FC = () => {
   return (
     <>
       <PageSection pageHead="Login" />
-      <div className="bg-color-light-gray py-20 w-1/2 mx-auto my-20 rounded-lg">
-        <h1 className="text-center text-3xl text-color-heading font-extrabold">
-          Login Into Your Account
-        </h1>
-        <form
-          className="flex flex-col gap-5 w-3/5 mx-auto mt-10"
-          onSubmit={handleSubmit(loginFormSubmition)}
-        >
-          <InputField
-            label="Username or email address"
-            type="text"
-            {...register("email")}
-          />
-          {errors.email && (
-            <p className="text-red-500 text-xs -mt-3">{errors.email.message}</p>
-          )}
-          <InputField
-            label="Password"
-            type="password"
-            {...register("password")}
-          />
-          {errors.password && (
-            <p className="text-red-500 text-xs -mt-3">
-              {errors.password.message}
+      <div className="px-3 md:px-0">
+        <div className="bg-color-light-gray py-20 w-full  md:w-1/2 mx-auto my-20 rounded-lg">
+          <h1 className="text-center text-3xl text-color-heading font-extrabold">
+            Login Into Your Account
+          </h1>
+          <form
+            className="flex flex-col gap-5 w-3/5 mx-auto mt-10"
+            onSubmit={handleSubmit(loginFormSubmition)}
+          >
+            <InputField
+              label="Username or email address"
+              type="text"
+              {...register("email")}
+            />
+            {errors.email && (
+              <p className="text-red-500 text-xs -mt-3">
+                {errors.email.message}
+              </p>
+            )}
+            <InputField
+              label="Password"
+              type="password"
+              {...register("password")}
+            />
+            {errors.password && (
+              <p className="text-red-500 text-xs -mt-3">
+                {errors.password.message}
+              </p>
+            )}
+            <CheckBox checkBoxData={checkBoxData} handler={() => {}} />
+            <Button text="Login" isRed={true} isWhite={false} />
+            <p className="text-color-heading font-bold">
+              Lost the Last Password ?
             </p>
-          )}
-          <CheckBox checkBoxData={checkBoxData} handler={() => {}} />
-          <Button text="Login" isRed={true} isWhite={false} />
-          <p className="text-color-heading font-bold">
-            Lost the Last Password ?
-          </p>
-        </form>
+          </form>
+        </div>
       </div>
     </>
   );

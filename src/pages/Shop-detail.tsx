@@ -17,7 +17,7 @@ const ShopDetail: React.FC = () => {
   const dispatch = useDispatch();
   const { cartData } = useSelector((state: { cart: any }) => state.cart);
   const [imgIndex, setImgIndex] = useState(0);
-  const params: string | any = useParams();
+  const params: any = useParams();
   const [count, setCount] = useState(1);
   const query = useQuery({
     queryKey: ["product"],
@@ -51,9 +51,9 @@ const ShopDetail: React.FC = () => {
   return (
     <>
       <PageSection pageHead="Shope Details" />
-      <div className="mt-5 grid grid-cols-2 gap-10 px-2">
-        <div className={"grid grid-cols-[20%_80%] gap-4"}>
-          <div className="flex flex-col gap-4">
+      <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-10 px-2">
+        <div className={"grid grid-cols-1 md:grid-cols-[20%_80%] gap-4"}>
+          <div className="grid grid-cols-5 md:grid-cols-1 gap-4">
             {productData.images.map((value: string, index: number) => (
               <img
                 src={value}
@@ -143,13 +143,13 @@ const ShopDetail: React.FC = () => {
         </div>
       </div>
       <div className="px-2 mt-10">
-        <ul className="flex gap-6 mb-3">
-          <li className="text-lg  text-color-heading font-bold cursor-pointer transition-all duration-300">
+        <div className="flex gap-6 mb-3">
+          <p className="text-lg  text-color-heading font-bold cursor-pointer transition-all duration-300">
             Description
-          </li>
-        </ul>
+          </p>
+        </div>
         <hr />
-        <div className="mt-5 grid grid-cols-2 gap-10">
+        <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-10">
           <p className="text-color-text-body text-base leading-8">
             {productData?.description}
           </p>

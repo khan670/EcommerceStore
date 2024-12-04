@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BsTelephone } from "react-icons/bs";
-import { IoHeartOutline } from "react-icons/io5";
+import { IoHeartOutline, IoMailOutline } from "react-icons/io5";
 import { PiShoppingCartSimple } from "react-icons/pi";
 import { HeaderLinks, NavigationData } from "../../data/Header";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,8 +8,14 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../store/CartSlice";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { HiMiniXMark } from "react-icons/hi2";
+import { CiLocationOn } from "react-icons/ci";
+import { MdOutlineLocationOn } from "react-icons/md";
+import { LuPhone } from "react-icons/lu";
 
 const Header: React.FC = () => {
+  const stickyRef = useRef(null);
+  const [isActive, setIsActive] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const { cartData } = useSelector((state) => state.cart);
@@ -34,6 +40,23 @@ const Header: React.FC = () => {
       navigate("/login");
     }
   };
+  useEffect(() => {
+    const handleScroll = () => {
+      if (stickyRef.current) {
+        const rect = stickyRef.current.getBoundingClientRect();
+        const distanceFromTop = rect.top;
+        if (distanceFromTop <= 0) {
+          setIsActive(true);
+        } else {
+          setIsActive(false);
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
   return (
     <>
       <header className="hidden md:block">
@@ -66,7 +89,10 @@ const Header: React.FC = () => {
             )}
           </ul>
         </div>
-        <div className="py-6 bg-[#FFFFFF] px-3 flex items-center gap-5">
+        <div
+          className="py-6 bg-[#FFFFFF] px-3 flex items-center gap-5"
+          ref={stickyRef}
+        >
           <img src="/logo-1.png" />
           {/* <div className="border border-gray-300 py-2 px-3 flex items-center  ">
           <p className="text-sm text-black font-bold border-r border-r-gray-300 px-2">
@@ -126,8 +152,19 @@ const Header: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="container mx-auto py-4 flex rounded-lg sticky top-0 z-30 overflow-visible">
-          <div className="flex-1 bg-color-heading py-4 rounded-s-lg px-5 flex items-center">
+
+        <div
+          className={` mx-auto py-0 flex  ${
+            isActive
+              ? "fixed top-0 w-full shadow z-50"
+              : "relative top-6 container rounded-lg"
+          }  z-30 overflow-visible transition-all duration-300`}
+        >
+          <div
+            className={`flex-1 bg-color-heading py-4 ${
+              isActive ? "" : "rounded-s-lg !py-5"
+            } px-5 flex items-center relative z-30`}
+          >
             <ul className="flex gap-10 text-sm font-bold text-white uppercase items-center">
               {NavigationData.map((item) => {
                 if (
@@ -147,7 +184,11 @@ const Header: React.FC = () => {
               })}
             </ul>
           </div>
-          <div className=" bg-color-theme py-4 px-5 rounded-e-lg flex items-center gap-2">
+          <div
+            className={`bg-color-theme py-4 px-5 ${
+              isActive ? "" : "rounded-e-lg"
+            } flex items-center gap-2`}
+          >
             <p className="text-base capitalize font-semibold text-white">
               Get 50% discount now
             </p>
@@ -157,7 +198,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       </header>
-      <nav className=" bg-white w-full z-50 py-5 px-3 flex items-center justify-between fixed top-0 shadow">
+      <nav className="flex md:hidden bg-white w-full z-50 py-5 px-3  items-center justify-between fixed top-0 shadow">
         <img src="/logo-1.png" alt="" width={150} height={30} />
         <GiHamburgerMenu
           className="text-black"
@@ -166,18 +207,99 @@ const Header: React.FC = () => {
         />
       </nav>
       <div
-        className={`w-2/5 z-50 bg-color-light-gray h-[100vh] fixed top-0 transition-all duration-500  ${
+        className={`block md:hidden w-4/5 h-screen overflow-y-auto z-50 bg-white px-5 py-5  fixed top-0 transition-all duration-500  ${
           isOpen ? "right-0" : "-right-full"
-        }`}
+        } `}
       >
-        <button onClick={() => setIsOpen(false)}>close</button>
-        asdfasdfasdfffffffffffffffffffffff f fff ffffff f f f f f f
-        <div>asdf</div>
-        <div>asdf</div>
-        <div>asdf</div>
-        <div>asdf</div>
-        <div>asdf</div>
-        <div>asdf</div>
+        <div className="flex justify-between items-center">
+          <img src="/logo-1.png" alt="" width={120} height={30} />
+          <span
+            className="p-1 border rounded-full inline-block hover:bg-color-theme hover:text-white text-color-heading "
+            onClick={() => setIsOpen(false)}
+          >
+            <HiMiniXMark size={15} />
+          </span>
+        </div>
+        <div className="flex flex-col gap-5 mt-7 text-sm font-bold text-white items-center">
+          {userData.avatar && (
+            <img
+              src={userData.avatar}
+              alt=""
+              width={100}
+              height={100}
+              className="rounded-full"
+            />
+          )}
+          <button
+            className="bg-color-light-gray py-2 px-3 text-color-heading rounded-lg"
+            onClick={handleLogout}
+          >
+            {userData.email ? "Logout" : "Login"}
+          </button>
+        </div>
+        <div className="mt-10 w-full">
+          <div className="flex flex-col gap-10 text-sm font-bold text-black uppercase items-start w-full">
+            {NavigationData.map((item) => {
+              if (
+                (userData.name && item.title === "Register") ||
+                item.title === "login"
+              )
+                return null;
+              return (
+                <Link
+                  to={item.link}
+                  key={item.id}
+                  className="hover:text-color-theme transition-all duration-300 border-b border-b-gray-200 py-2 w-full"
+                >
+                  {item.title}
+                </Link>
+              );
+            })}
+            <div className="flex gap-5 items-center  w-full">
+              <span
+                className="text-2xl inline-block text-black bg-gray-200 p-3 rounded-full hover:bg-color-theme hover:text-white transition-all duration-300 cursor-pointer relative"
+                onClick={handleCartPage}
+              >
+                <PiShoppingCartSimple size={20} />
+                <p className=" absolute text-xs px-1 text-white border border-gray-300 top-0 right-0  rounded-full bg-color-theme">
+                  {cartData.length}
+                </p>
+              </span>
+              <p className="text-start text-sm text-color-text-body font-medium">
+                Your Cart,
+              </p>
+              <p className="text-sm -mt-1 text-black font-bold inline-block ml-auto">
+                ${totalPrice.toFixed(2)}
+              </p>
+            </div>
+            <div className="flex flex-col gap-3">
+              <div className="flex gap-2 items-center">
+                <span className="p-2 bg-color-theme text-white rounded-lg inline-block">
+                  <LuPhone />
+                </span>
+                <p className="text-sm font-medium capitalize">
+                  Phone : +(258) 2159-2159
+                </p>
+              </div>
+              <div className="flex gap-2 items-center">
+                <span className="p-2 bg-color-theme text-white rounded-lg inline-block">
+                  <MdOutlineLocationOn />
+                </span>
+                <p className="text-sm font-medium capitalize">
+                  Address : kohat,pakistan
+                </p>
+              </div>
+              <div className="flex gap-2 items-center">
+                <span className="p-2 bg-color-theme text-white rounded-lg inline-block">
+                  <IoMailOutline />
+                </span>
+                <p className="text-sm font-medium capitalize">
+                  Email : Ojz7H@example.com
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
