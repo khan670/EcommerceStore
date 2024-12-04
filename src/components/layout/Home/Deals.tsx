@@ -13,12 +13,12 @@ const Deals = () => {
   const productData = query.data;
   if (query.isLoading) return <h1>loading...</h1>;
   return (
-    <div className="bg-gray-100 relative py-10 px-20">
+    <div className="bg-gray-100 relative py-10 px-5 lg:p-20">
       <div className="absolute bottom-0 left-0 ">
         <img src="/deal-shape.png" alt="" />
       </div>
-      <div className="flex items-center gap-10 relative z-10 ">
-        <div className="w-1/2 flex flex-col items-start gap-10 ">
+      <div className="flex flex-col lg:flex-row items-center gap-10 relative z-10 ">
+        <div className="lg:w-1/2 w-full flex flex-col items-start gap-10 ">
           <div className="">
             <h1 className="text-4xl text-color-heading font-extrabold">
               Deal Of the days
@@ -38,9 +38,14 @@ const Deals = () => {
           </div>
           <Button text="View All Collection" isRed={false} isWhite={true} />
         </div>
-        <div className="flex  gap-5 w-3/5">
+        <div className="flex  gap-5 lg:w-3/5 w-full flex-col lg:flex-row">
           {productData.map((value: ProductType, index: number) => {
-            if (index <= 1) return <ShopCard data={value} />;
+            if (index <= 1)
+              return (
+                <div className="lg:w-1/2 w-full">
+                  <ShopCard data={value} />
+                </div>
+              );
           })}
         </div>
       </div>

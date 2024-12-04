@@ -22,6 +22,32 @@ const Categories: React.FC = () => {
     autoplaySpeed: 2000,
     rtl: true,
     arrows: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
+        },
+      },
+    ],
   };
   const query = useQuery({
     queryKey: ["category"],
@@ -33,14 +59,14 @@ const Categories: React.FC = () => {
   return (
     <>
       <div className="px-2 overflow-hidden mt-9">
-        <div className=" flex justify-between items-center mb-7">
-          <div className="flex flex-col gap-4">
+        <div className=" flex sm:flex-row flex-col gap-5 justify-between lg:items-center mb-7">
+          <div className="flex flex-col gap-1 lg:gap-4">
             <Heading text="Best for your categories" />
             <p className="text-sm text-gray-400 font-semibold">
               29 categories belonging to a total 15,892 products
             </p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 justify-center items-center">
             <button
               className="p-3 transition-all duration-300 bg-gray-200 rounded-full text-gray-400 hover:bg-color-theme hover:text-white"
               onClick={() => sliderRef.current?.slickPrev()}
@@ -56,22 +82,23 @@ const Categories: React.FC = () => {
           </div>
         </div>
         <hr />
-
-        <Slider {...settings} ref={sliderRef} className="mt-16 ">
-          {categories.map((value: CategoryType, index: number) => {
-            if (index <= 4)
-              return (
-                <div className="bg-gray-200 p-2 rounded flex flex-col gap-4 hover:bg-color-theme group hover:text-white cursor-pointer transition-all duration-300">
-                  <img src={value.image} alt="" className="rounded" />
-                  <p className="uppercase mt-2 text-center font-bold text-color-heading group-hover:text-white ">
-                    {value.name}
-                  </p>
-                </div>
-              );
-          })}
-        </Slider>
+        <div className="w-full overflow-hidden">
+          <Slider {...settings} ref={sliderRef} className="mt-16 ">
+            {categories.map((value: CategoryType, index: number) => {
+              if (index <= 4)
+                return (
+                  <div className="bg-gray-200 p-2 rounded flex flex-col gap-4 hover:bg-color-theme group hover:text-white cursor-pointer transition-all duration-300">
+                    <img src={value.image} alt="" className="rounded" />
+                    <p className="uppercase mt-2 text-center font-bold text-color-heading group-hover:text-white ">
+                      {value.name}
+                    </p>
+                  </div>
+                );
+            })}
+          </Slider>
+        </div>
       </div>
-      <div className="mt-32 grid grid-cols-3 gap-6">
+      <div className="mt-32 grid grid-cols-1 lg:grid-cols-3 gap-6 justify-center">
         {discountOffers.map((value) => (
           <div className="relative flex items-center justify-center p-2 bg-gray-100 h-64 group overflow-hidden cursor-pointer">
             <img

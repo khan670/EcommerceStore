@@ -11,15 +11,17 @@ import { SiPayoneer } from "react-icons/si";
 const Footer = () => {
   return (
     <footer className="bg-gray-100 py-10 px-3 mt-10">
-      <div className="bg-white p-5 rounded flex justify-between">
+      <div className="bg-white p-5 rounded flex flex-col md:flex-row lg:justify-between gap-5">
         {footerServices.map((value) => {
           const Icon = value.icon;
           return (
-            <div className="flex items-center gap-4  [&:not(:first-child)]:border-l border-r-gray-300 px-4 py-2">
+            <div className="flex items-center gap-4   lg:[&:not(:first-child)]:border-l w-full lg:border-r-gray-300 ">
               <Icon size={30} />
               <div>
-                <h1 className="font-extrabold text-lg">{value.heading}</h1>
-                <p className="text-sm text-gray-400 font-normal">
+                <h1 className="font-extrabold text-lg px-4 py-2">
+                  {value.heading}
+                </h1>
+                <p className="text-sm text-gray-400 font-normal ">
                   {value.text}
                 </p>
               </div>
@@ -27,9 +29,9 @@ const Footer = () => {
           );
         })}
       </div>
-      <div className="mt-5 flex justify-between gap-3 mb-5">
+      <div className="mt-5 flex flex-col md:flex-row justify-between gap-3 mb-5">
         {/* about store */}
-        <div className="flex flex-col gap-5 w-1/5">
+        <div className="flex flex-col gap-5 lg:w-1/5 w-full ">
           <h1 className="text-lg font-extrabold">About Store</h1>
           <div className="flex items-center gap-2 mt-2">
             <span className="text-lg bg-white p-4 rounded-full inline-block text-color-theme">
@@ -67,7 +69,7 @@ const Footer = () => {
           </div>
         </div>
         {/* ############# Our Stores   ################### */}
-        <div className="w-1/5">
+        <div className="lg:w-1/5 w-full">
           <div className="flex flex-col gap-5 ">
             <h1 className="text-lg font-extrabold">Our Store</h1>
             <div className="flex flex-col gap-3">
@@ -80,7 +82,7 @@ const Footer = () => {
           </div>
         </div>
         {/* ################  Shop Categories  ############################ */}
-        <div className="w-1/5">
+        <div className="lg:w-1/5 w-full">
           <div className="flex flex-col gap-5">
             <h1 className="text-lg font-extrabold">Shop Categories</h1>
             <div className="flex flex-col gap-3">
@@ -93,7 +95,7 @@ const Footer = () => {
           </div>
         </div>
         {/* ######################   Useful Links   ############################### */}
-        <div className="w-1/5">
+        <div className="lg:w-1/5 w-full">
           <div className="flex flex-col gap-3">
             <h1 className="text-lg font-extrabold">Usefull Links</h1>
             <div className="flex flex-col gap-3">
@@ -106,7 +108,7 @@ const Footer = () => {
           </div>
         </div>
         {/* ######################## our news later ######################### */}
-        <div className="w-1/5">
+        <div className="lg:w-1/5 w-full">
           <div className="flex flex-col gap-5">
             <h1 className="text-lg font-extrabold">Our Newsletter</h1>
             <div>
