@@ -13,3 +13,34 @@ export interface CategoryType {
   id?: number | string;
   name: string;
 }
+
+export interface Product {
+  cartData?: {
+    id: number;
+    images: string[];
+    category: { name: string };
+    title: string;
+    price: number;
+    description: string;
+    quantity?: number;
+  }[];
+  cart?: {
+    id: number;
+    images: string[];
+    category: { name: string };
+    title: string;
+    price: number;
+    description: string;
+    quantity?: number;
+  };
+}
+
+export interface CartData {
+  id: number;
+  images: string[];
+  category: { name: string };
+  title: string;
+  price: number;
+  description: string;
+  quantity?: number;
+}

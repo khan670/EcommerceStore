@@ -6,21 +6,22 @@ import { HeaderLinks, NavigationData } from "../../data/Header";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { clearCart } from "../../store/CartSlice";
+import { clearCart, InitialStateType } from "../../store/CartSlice";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { HiMiniXMark } from "react-icons/hi2";
-import { CiLocationOn } from "react-icons/ci";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { LuPhone } from "react-icons/lu";
-
+import { CartData } from "../../Types/ShopTypes";
 const Header: React.FC = () => {
-  const stickyRef = useRef(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
-  const { cartData } = useSelector((state) => state.cart);
+  const { cartData } = useSelector(
+    (state: { cart: InitialStateType }) => state?.cart
+  );
   const totalPrice = cartData.reduce(
-    (acc: number, item: number) => acc + item.price * item.quantity,
+    (acc: number, item: CartData) => acc + item.price * (item?.quantity || 1),
     0
   );
 
@@ -45,7 +46,7 @@ const Header: React.FC = () => {
       if (stickyRef.current) {
         const rect = stickyRef.current.getBoundingClientRect();
         const distanceFromTop = rect.top;
-        if (distanceFromTop <= 0) {
+        if (distanceFromTop <= -130) {
           setIsActive(true);
         } else {
           setIsActive(false);
@@ -157,12 +158,12 @@ const Header: React.FC = () => {
           className={` mx-auto py-0 flex  ${
             isActive
               ? "fixed top-0 w-full shadow z-50"
-              : "relative top-6 container rounded-lg"
-          }  z-30 overflow-visible transition-all duration-300`}
+              : "relative top-6 w-11/12 rounded-lg"
+          }  z-30 overflow-visible transition-all duration-1000`}
         >
           <div
             className={`flex-1 bg-color-heading py-4 ${
-              isActive ? "" : "rounded-s-lg !py-5"
+              isActive ? "" : "rounded-s-lg !py-6"
             } px-5 flex items-center relative z-30`}
           >
             <ul className="flex gap-10 text-sm font-bold text-white uppercase items-center">

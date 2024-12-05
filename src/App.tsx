@@ -12,6 +12,7 @@ import Register from "./pages/Register";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Contact from "./pages/Contact";
+import Admin from "./pages/Admin";
 
 const App: React.FC = () => {
   const router = createBrowserRouter([
@@ -64,6 +65,10 @@ const App: React.FC = () => {
           element: <Contact />,
         },
       ],
+    },
+    {
+      path: "admin",
+      element: <Admin />,
     },
   ]);
   return (

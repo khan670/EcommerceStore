@@ -12,16 +12,17 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../store/CartSlice";
 import { toast } from "react-toastify";
+import { Product } from "../Types/ShopTypes";
 
 const ShopDetail: React.FC = () => {
   const dispatch = useDispatch();
-  const { cartData } = useSelector((state: { cart: any }) => state.cart);
+  const { cartData } = useSelector((state: { cart: Product }) => state?.cart);
   const [imgIndex, setImgIndex] = useState(0);
-  const params: any = useParams();
+  const params = useParams<{ shopId: any }>();
   const [count, setCount] = useState(1);
   const query = useQuery({
     queryKey: ["product"],
-    queryFn: () => getSingleProduct(params.shopId),
+    queryFn: () => getSingleProduct(params?.shopId),
   });
   const productData = query.data;
   console.log(productData);
@@ -32,7 +33,7 @@ const ShopDetail: React.FC = () => {
       toast.error("Please login first");
       return;
     }
-    const existingProduct = cartData.find(
+    const existingProduct = cartData?.find(
       (item: { id: number }) => item.id === productData.id
     );
     if (existingProduct) {

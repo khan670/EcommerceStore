@@ -31,7 +31,9 @@ const ShopGrid: React.FC = () => {
   const query = useQuery({
     queryKey: ["filter", start, end, filters],
     queryFn: () => getProductsByCategory(filters, start, end),
-    onSuccess: () => prefetchData(page + 1),
+    onSuccess: () => {
+      prefetchData(page + 1);
+    },
   });
   const categoryList = useQuery({
     queryKey: ["category"],

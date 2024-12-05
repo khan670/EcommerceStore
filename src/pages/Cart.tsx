@@ -3,14 +3,21 @@ import PageSection from "../components/layout/PageSection";
 import { MdOutlineCancel } from "react-icons/md";
 import Button from "../components/Buttons/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { clearCart, removeFromCart } from "../store/CartSlice";
+import {
+  clearCart,
+  InitialStateType,
+  removeFromCart,
+} from "../store/CartSlice";
+import { CartData } from "../Types/ShopTypes";
 
 const Cart: React.FC = () => {
   const userData = JSON.parse(localStorage.getItem("user") || "{}");
   const dispatch = useDispatch();
-  const { cartData, taxPrice } = useSelector((state) => state.cart);
+  const { cartData, taxPrice } = useSelector(
+    (state: { cart: InitialStateType }) => state.cart
+  );
   const totalPrice = cartData.reduce(
-    (acc: number, item: number) => acc + item.price * item.quantity,
+    (acc: number, item: CartData) => acc + item.price * (item?.quantity || 1),
     0
   );
   const totalPriceWithTax = totalPrice * (1 + taxPrice / 100);
@@ -50,37 +57,30 @@ const Cart: React.FC = () => {
             </thead>
 
             <tbody>
-              {cartData.map((value) => (
-                <>
-                  <tr
-                    className="font-bold border-b border-b-gray-300"
-                    key={value}
-                  >
-                    <td className="px-4 py-4 text-center">
-                      <MdOutlineCancel
-                        size={20}
-                        className="hover:text-color-theme transition-all duration-300 mx-auto cursor-pointer"
-                        onClick={() => handleRemoveFromCart(value.id)}
-                      />
-                    </td>
-                    <td className="px-4 py-4">
-                      <img
-                        src={value.images[0]}
-                        alt=""
-                        width={50}
-                        height={50}
-                      />
-                    </td>
-                    <td className="px-4 py-4 text-center">{value.title}</td>
-                    <td className="px-4 py-4 text-center">
-                      ${value.price.toFixed(2)}
-                    </td>
-                    <td className="px-4 py-4 text-center">{value.quantity}</td>
-                    <td className="px-4 py-4 text-center">
-                      ${value.price * value.quantity.toFixed(2)}
-                    </td>
-                  </tr>
-                </>
+              {cartData.map((value, index) => (
+                <tr
+                  className="font-bold border-b border-b-gray-300"
+                  key={index}
+                >
+                  <td className="px-4 py-4 text-center">
+                    <MdOutlineCancel
+                      size={20}
+                      className="hover:text-color-theme transition-all duration-300 mx-auto cursor-pointer"
+                      onClick={() => handleRemoveFromCart(value.id)}
+                    />
+                  </td>
+                  <td className="px-4 py-4">
+                    <img src={value.images[0]} alt="" width={50} height={50} />
+                  </td>
+                  <td className="px-4 py-4 text-center">{value.title}</td>
+                  <td className="px-4 py-4 text-center">
+                    ${value.price.toFixed(2)}
+                  </td>
+                  <td className="px-4 py-4 text-center">{value.quantity}</td>
+                  <td className="px-4 py-4 text-center">
+                    ${value.price * (value?.quantity || 1)}
+                  </td>
+                </tr>
               ))}
             </tbody>
           </table>
