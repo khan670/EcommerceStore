@@ -34,3 +34,12 @@ export const getProductsByCategory = async (
   const response = await data.json();
   return response;
 };
+
+export const addProductToStore = async (data) => {
+  const response = await fetch("https://api.escuelajs.co/api/v1/products/", {
+    method: "POST",
+    headers: { "Content-Type": "appllication/json" },
+    body: JSON.stringify(data),
+  });
+  return response;
+};

@@ -13,6 +13,10 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
+import AddProduct from "./pages/AddProduct";
+import AddCategory from "./pages/AddCategory";
+import AllUsers from "./pages/AllUsers";
+import Profile from "./pages/Profile";
 
 const App: React.FC = () => {
   const router = createBrowserRouter([
@@ -69,6 +73,24 @@ const App: React.FC = () => {
     {
       path: "admin",
       element: <Admin />,
+      children: [
+        {
+          path: "",
+          element: <AddProduct />,
+        },
+        {
+          path: "addcategory",
+          element: <AddCategory />,
+        },
+        {
+          path: "allusers",
+          element: <AllUsers />,
+        },
+        {
+          path: "profile",
+          element: <Profile />,
+        },
+      ],
     },
   ]);
   return (
