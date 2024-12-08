@@ -35,7 +35,7 @@ export const getProductsByCategory = async (
   return response;
 };
 
-export const addProductToStore = async (data) => {
+export const addProductToStore = async (data: object) => {
   const response = await fetch("https://api.escuelajs.co/api/v1/products/", {
     method: "POST",
     headers: { "Content-Type": "appllication/json" },

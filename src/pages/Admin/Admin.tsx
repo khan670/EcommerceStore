@@ -1,6 +1,6 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { AdminNavigationLinks } from "../../Types/Admin";
-import { FaHamburger, FaTimes } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
 

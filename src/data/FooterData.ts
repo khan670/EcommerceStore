@@ -2,7 +2,6 @@ import { BsBoxSeam } from "react-icons/bs";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { MdPayment } from "react-icons/md";
 import { TbHours24 } from "react-icons/tb";
-import { Link } from "react-router-dom";
 
 export const footerServices = [
   {

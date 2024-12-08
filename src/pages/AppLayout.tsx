@@ -1,14 +1,17 @@
-import React from "react";
-import Header from "../components/layout/Header";
+import React, { Suspense } from "react";
+const Header = React.lazy(() => import("../components/layout/Header"));
 import { Outlet } from "react-router-dom";
-import Footer from "../components/Footer";
+import Loader from "../components/Loader";
+const Footer = React.lazy(() => import("../components/Footer"));
 
 const AppLayout: React.FC = () => {
   return (
     <>
-      <Header />
-      <Outlet />
-      <Footer />
+      <Suspense fallback={<Loader />}>
+        <Header />
+        <Outlet />
+        <Footer />
+      </Suspense>
     </>
   );
 };

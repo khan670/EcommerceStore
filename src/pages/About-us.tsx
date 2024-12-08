@@ -1,18 +1,29 @@
-import React from "react";
-import PageSection from "../components/layout/PageSection";
-import Sponsers from "../components/layout/Home/Sponsers";
-import LifeStyle from "../components/layout/About/LifeStyle";
-import Services from "../components/layout/About/Services";
-import Customers from "../components/layout/About/Customers";
+import React, { Suspense } from "react";
+import Loader from "../components/Loader";
+const PageSection = React.lazy(
+  () => import("../components/layout/PageSection")
+);
+const Sponsers = React.lazy(() => import("../components/layout/Home/Sponsers"));
+const LifeStyle = React.lazy(
+  () => import("../components/layout/About/LifeStyle")
+);
+const Services = React.lazy(
+  () => import("../components/layout/About/Services")
+);
+const Customers = React.lazy(
+  () => import("../components/layout/About/Customers")
+);
 
 const AboutUs: React.FC = () => {
   return (
     <>
-      <PageSection pageHead="About Us" />
-      <LifeStyle />
-      <Services />
-      <Customers />
-      <Sponsers />
+      <Suspense fallback={<Loader />}>
+        <PageSection pageHead="About Us" />
+        <LifeStyle />
+        <Services />
+        <Customers />
+        <Sponsers />
+      </Suspense>
     </>
   );
 };

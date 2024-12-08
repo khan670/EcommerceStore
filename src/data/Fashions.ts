@@ -1,48 +1,4 @@
-import { FashionsDataType } from "../Types/HomeType";
 import { CheckBoxDataType } from "../Types/ShopTypes";
-
-export const FashionsData: FashionsDataType[] = [
-  {
-    id: 1,
-    imgUrl: "/fashion-1.png",
-    title: "LEVI'S COTTON",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, quae.",
-    rating: 2,
-    totalRattings: 17,
-    oldPrice: 2000,
-    newPrice: 1500,
-  },
-  {
-    id: 2,
-    imgUrl: "/fashion-2.png",
-    title: "LEVI'S COTTON",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, quae.",
-    rating: 4,
-    totalRattings: 17,
-    oldPrice: 2000,
-    newPrice: 1500,
-  },
-  {
-    id: 3,
-    imgUrl: "/fashion-3.png",
-    title: "LEVI'S COTTON",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, quae.",
-    rating: 3,
-    totalRattings: 17,
-    oldPrice: 2000,
-    newPrice: 1500,
-  },
-  {
-    id: 4,
-    imgUrl: "/fashion-4.png",
-    title: "LEVI'S COTTON",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, quae.",
-    rating: 3,
-    totalRattings: 17,
-    oldPrice: 2000,
-    newPrice: 1500,
-  },
-];
 
 export const CollectionsData = [
   {
@@ -75,29 +31,6 @@ export const CollectionsData = [
     numProducts: 1000,
     collection: "Top Accessories",
     collections: ["Blazer", "Blouses & Shirts", "Dresser", "Jeans"],
-  },
-];
-
-export const ShopCardData = [
-  {
-    id: 1,
-    imgUrl: "/shop-5.jpg",
-    title: "LEVI'S COTTON",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, quae.",
-    rating: 2,
-    totalRattings: 17,
-    oldPrice: 2000,
-    newPrice: 1500,
-  },
-  {
-    id: 1,
-    imgUrl: "/shop-6.jpg",
-    title: "LEVI'S COTTON",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, quae.",
-    rating: 2,
-    totalRattings: 17,
-    oldPrice: 2000,
-    newPrice: 1500,
   },
 ];
 

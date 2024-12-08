@@ -1,6 +1,6 @@
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoCartOutline, IoEyeOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Rattings from "../Rattings";
 import { Product, ProductType } from "../../Types/ShopTypes";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,10 +8,14 @@ import { toast } from "react-toastify";
 import { addToCart } from "../../store/CartSlice";
 
 const ShopCard = ({ data }: { data: ProductType }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { cartData } = useSelector((state: { cart: Product }) => state?.cart);
   const randomNumber = Math.floor(Math.random() * 6);
   const imgUrls: string[] = [];
+  const handleDetailPage = () => {
+    navigate(`/shop/${data.id}`);
+  };
   if (Array.isArray(data.images)) {
     data.images.forEach((items) => {
       try {
@@ -48,6 +52,7 @@ const ShopCard = ({ data }: { data: ProductType }) => {
     dispatch(addToCart(productCart));
     toast.success("Product added to cart successfully");
   };
+
   const defaultImage = "/fashion-4.png";
   const displayImage =
     imgUrls.length > 0
@@ -74,7 +79,10 @@ const ShopCard = ({ data }: { data: ProductType }) => {
           <span className="inline-block bg-white p-3 rounded-full hover:bg-color-theme hover:text-white transition-all duration-300">
             <IoMdHeartEmpty size={18} />
           </span>
-          <span className="inline-block bg-white p-3 rounded-full hover:bg-color-theme hover:text-white transition-all duration-300">
+          <span
+            className="inline-block bg-white p-3 rounded-full hover:bg-color-theme hover:text-white transition-all duration-300"
+            onClick={handleDetailPage}
+          >
             <IoEyeOutline />
           </span>
         </div>

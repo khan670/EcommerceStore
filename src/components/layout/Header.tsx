@@ -108,7 +108,7 @@ const Header: React.FC = () => {
                     href="tel:123456789"
                     className="text-base text-black font-bold inline-block"
                   >
-                    +(92) 123456789
+                    +(92) 33173-70405
                   </a>
                 </div>
                 <div className="text-2xl inline-block text-black bg-gray-200 p-3 rounded-full hover:bg-color-theme hover:text-white transition-all duration-300 cursor-pointer">
@@ -289,7 +289,7 @@ const Header: React.FC = () => {
                   <LuPhone />
                 </span>
                 <p className="text-sm font-medium capitalize">
-                  Phone : +(258) 2159-2159
+                  Phone : +(92) 33173-70405
                 </p>
               </div>
               <div className="flex gap-2 items-center">
@@ -305,7 +305,7 @@ const Header: React.FC = () => {
                   <IoMailOutline />
                 </span>
                 <p className="text-sm font-medium capitalize">
-                  Email : Ojz7H@example.com
+                  Email : rayankhanfeg@gmail.com
                 </p>
               </div>
             </div>

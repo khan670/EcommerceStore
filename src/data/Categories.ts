@@ -1,29 +1,29 @@
-export const CategoryData = [
-  {
-    imgUrl: "/cate-1.png",
-    content: "women wear",
-  },
-  {
-    imgUrl: "/cate-2.png",
-    content: "shoes collection",
-  },
-  {
-    imgUrl: "/cate-3.png",
-    content: "bags collection",
-  },
-  {
-    imgUrl: "/cate-4.png",
-    content: "watch hare",
-  },
-  {
-    imgUrl: "/cate-5.png",
-    content: "accessories",
-  },
-  {
-    imgUrl: "/cate-6.png",
-    content: "sunglases",
-  },
-];
+// export const CategoryData = [
+//   {
+//     imgUrl: "/cate-1.png",
+//     content: "women wear",
+//   },
+//   {
+//     imgUrl: "/cate-2.png",
+//     content: "shoes collection",
+//   },
+//   {
+//     imgUrl: "/cate-3.png",
+//     content: "bags collection",
+//   },
+//   {
+//     imgUrl: "/cate-4.png",
+//     content: "watch hare",
+//   },
+//   {
+//     imgUrl: "/cate-5.png",
+//     content: "accessories",
+//   },
+//   {
+//     imgUrl: "/cate-6.png",
+//     content: "sunglases",
+//   },
+// ];
 
 export const discountOffers = [
   {
