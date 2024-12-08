@@ -1,50 +1,26 @@
-# React + TypeScript + Vite
+# E-Commerce Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This is a fully functional E-Commerce Store that allows users to browse and purchase products while providing administrators with tools to manage the store. The application integrates an online API for product data and user interactions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+### User Features:
+- Browse products retrieved from an online API.
+- View product details including images, descriptions, and prices.
+- Add products to the cart and proceed to checkout.
+- User authentication for a personalized experience.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Admin Features:
+- Manage products: Add, edit, or delete products using API requests.
+- Manage categories: Organize products into categories.
+- View and manage registered users.
+- Monitor order history.
 
-- Configure the top-level `parserOptions` property like this:
+## Tech Stack
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Frontend**: React.js, Tailwind CSS (or another CSS framework you've used)
+- **API**: Integration with an online API for product and user management.
+- **Authentication**: JWT or another secure method if applicable.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
