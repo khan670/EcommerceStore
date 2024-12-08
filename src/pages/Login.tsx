@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PageSection from "../components/layout/PageSection";
 import CheckBox from "../components/Inputs/CheckBox";
 import Button from "../components/Buttons/Button";
@@ -36,6 +36,9 @@ const Login: React.FC = () => {
   });
   const { mutate } = useMutation({
     mutationFn: login,
+  });
+  useEffect(() => {
+    document.title = "Roiser - Login";
   });
   const loginFormSubmition = async (data: FormSchemaType) => {
     console.log(data);

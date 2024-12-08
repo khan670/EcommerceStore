@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PageSection from "../components/layout/PageSection";
 import Heading from "../components/Heading";
 import InputField from "../components/Inputs/InputField";
@@ -28,6 +28,9 @@ const Checkout: React.FC = () => {
   );
   const { register, handleSubmit } = useForm<FormType>({
     resolver: zodResolver(FormSchema),
+  });
+  useEffect(() => {
+    document.title = "Roiser - Checkout";
   });
   const formSubmition = (data: FormType) => {
     console.log(data);

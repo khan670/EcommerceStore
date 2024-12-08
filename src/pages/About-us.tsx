@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import Loader from "../components/Loader";
 const PageSection = React.lazy(
   () => import("../components/layout/PageSection")
@@ -15,6 +15,9 @@ const Customers = React.lazy(
 );
 
 const AboutUs: React.FC = () => {
+  useEffect(() => {
+    document.title = "Roiser - About Us";
+  });
   return (
     <>
       <Suspense fallback={<Loader />}>

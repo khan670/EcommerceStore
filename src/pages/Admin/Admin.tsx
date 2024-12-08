@@ -2,17 +2,21 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { AdminNavigationLinks } from "../../Types/Admin";
 import { FaTimes } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Admin = () => {
   const navigate = useNavigate();
   const [navigationOpen, setIsNavigationOpen] = useState(false);
   const user = JSON.parse(localStorage.getItem("user")!);
+  useEffect(() => {
+    document.title = "Roiser - Admin Dashboard";
+  });
   if (user.role !== "admin") return <div>Unauthorized</div>;
   const handleLogout = () => {
     localStorage.clear();
     navigate("/");
   };
+
   return (
     <div className="w-full">
       <div className="px-8 py-5 flex justify-between w-screen items-center">

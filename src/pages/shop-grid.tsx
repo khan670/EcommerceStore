@@ -43,7 +43,9 @@ const ShopGrid: React.FC = () => {
     queryKey: ["category"],
     queryFn: getCategories,
   });
-
+  useEffect(() => {
+    document.title = "Roiser - Shop Grid";
+  });
   const categories = categoryList.data;
   const productData = query.data;
   console.log(productData);

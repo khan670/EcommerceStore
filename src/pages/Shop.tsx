@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 const ShopCard = React.lazy(() => import("../components/layout/ShopCard"));
 // import ShopCard from "../components/layout/ShopCard";
 import PageSection from "../components/layout/PageSection";
@@ -19,7 +19,9 @@ const Shop: React.FC = () => {
     queryKey: ["pagination", start, end],
     queryFn: () => getLimitedProduct(start, end),
   });
-
+  useEffect(() => {
+    document.title = "Roiser - Shop";
+  });
   const productData = query.data;
 
   return (

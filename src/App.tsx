@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Loader from "./components/Loader";
@@ -163,6 +163,9 @@ const App: React.FC = () => {
       ],
     },
   ]);
+  useEffect(() => {
+    document.title = "Roiser ";
+  });
   return (
     <>
       <RouterProvider router={router} />

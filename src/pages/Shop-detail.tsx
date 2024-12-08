@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageSection from "../components/layout/PageSection";
 import Rattings from "../components/Rattings";
 import { FaEye } from "react-icons/fa";
@@ -20,6 +20,9 @@ const ShopDetail: React.FC = () => {
   const [imgIndex, setImgIndex] = useState(0);
   const params = useParams<{ shopId: any }>();
   const [count, setCount] = useState(1);
+  useEffect(() => {
+    document.title = "Roiser - Shop Details";
+  });
   const query = useQuery({
     queryKey: ["product"],
     queryFn: () => getSingleProduct(params?.shopId),

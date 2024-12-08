@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PageSection from "../components/layout/PageSection";
 import CheckBox from "../components/Inputs/CheckBox";
 import Button from "../components/Buttons/Button";
@@ -55,6 +55,9 @@ const Register: React.FC = () => {
     },
     onError: (error) => toast.error(error.message),
   });
+  useEffect(() => {
+    document.title = "Roiser - Register";
+  });
   const handleFormSubmit = (data: FormSchemaType) => {
     const userData = {
       ...data,
@@ -62,7 +65,7 @@ const Register: React.FC = () => {
       avatar: "https://i.imgur.com/yhW6Yw1.jpg",
     };
     mutate(userData);
-    isSuccess && localStorage.setItem("user", JSON.stringify(userData));
+    if (isSuccess) localStorage.setItem("user", JSON.stringify(userData));
     console.log(userData);
   };
   return (

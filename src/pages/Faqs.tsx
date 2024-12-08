@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PageSection from "../components/layout/PageSection";
 import Heading from "../components/Heading";
 
 import { faqs } from "../data/Faqs";
 import Faq from "../components/layout/Faqs/Faq";
 const Faqs: React.FC = () => {
+  useEffect(() => {
+    document.title = "Roiser - Faqs";
+  });
   return (
     <>
       <PageSection pageHead="Faqs" />

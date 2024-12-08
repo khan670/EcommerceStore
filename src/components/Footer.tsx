@@ -16,7 +16,7 @@ const Footer = () => {
         {footerServices.map((value) => {
           const Icon = value.icon;
           return (
-            <div className="flex items-center gap-4   lg:[&:not(:first-child)]:border-l w-full lg:border-r-gray-300 ">
+            <div className="flex items-center gap-4 p-2   lg:[&:not(:first-child)]:border-l w-full lg:border-r-gray-300 ">
               <Icon size={30} />
               <div>
                 <h1 className="font-extrabold text-lg px-4 py-2">

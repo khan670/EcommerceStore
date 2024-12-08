@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageSection from "../components/layout/PageSection";
 import { MdOutlineCancel } from "react-icons/md";
 import Button from "../components/Buttons/Button";
@@ -58,6 +58,9 @@ const Cart: React.FC = () => {
   const handleRemoveFromCart = (id: number) => {
     dispatch(removeFromCart(id));
   };
+  useEffect(() => {
+    document.title = "Roiser - Cart";
+  });
   if (!userData.email)
     return (
       <div className="h-full text-center my-10 text-2xl capitalize font-bold ">

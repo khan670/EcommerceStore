@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PageSection from "../components/layout/PageSection";
 import Heading from "../components/Heading";
 import InputField from "../components/Inputs/InputField";
 import Button from "../components/Buttons/Button";
 
 const Contact: React.FC = () => {
+  useEffect(() => {
+    document.title = "Roiser - Contact";
+  });
   return (
     <div>
       <PageSection pageHead="Contact" />
