@@ -9,11 +9,11 @@ const Contact: React.FC = () => {
     <div>
       <PageSection pageHead="Contact" />
 
-      <div className="mt-5 bg-color-light-gray p-20  flex flex-col lg:flex-row gap-10">
+      <div className="mt-5 bg-color-light-gray sm:p-20 p-10  flex flex-col lg:flex-row gap-10">
         <div className="lg:w-3/4 w-full">
           <Heading text="Get In Touch" />
           <div className="flex flex-col gap-5 items-start">
-            <div className="flex gap-5 mt-10 w-full">
+            <div className="flex sm:flex-row flex-col gap-5 mt-10 w-full">
               <InputField type="text" label="Your Name" className="w-full" />
               <InputField
                 type="Email"
@@ -36,7 +36,12 @@ const Contact: React.FC = () => {
           </div>
         </div>
         <div className="p-5 bg-white lg:w-1/4 w-full rounded-lg border border-gray-300">
-          <img src="/storeImage.png" alt="" className="w-full object-cover" />
+          <img
+            src="/storeImage.png"
+            alt=""
+            className="w-full object-cover"
+            loading="lazy"
+          />
           <h1 className="text-xl mt-2 font-extrabold text-color-heading ">
             Store
           </h1>

@@ -5,7 +5,7 @@ import Button from "../../Buttons/Button";
 
 const LifeStyle: React.FC = () => {
   return (
-    <div className="grid grid-cols-2 py-10 items-start px-3 gap-3">
+    <div className="grid  md:grid-cols-2 grid-cols-1 py-10 items-start px-3 gap-3">
       <div className="py-10 flex flex-col gap-5 items-start">
         <Heading
           text="Creating a World Where Fashion is a Lifestyle"
@@ -17,7 +17,7 @@ const LifeStyle: React.FC = () => {
           So, let's dive into the world of fashion, where trends are set,
           boundaries are broken.
         </p>
-        <div className="grid grid-cols-2 gap-5 justify-center w-full">
+        <div className="grid sm:grid-cols-2 grid-cols-1 gap-5 justify-center w-full">
           {[1, 2, 3, 4].map((value) => (
             <div
               className="flex gap-2 items-center px-4 py-4 rounded shadow-custom-shadow w-full"
@@ -33,7 +33,7 @@ const LifeStyle: React.FC = () => {
         </div>
       </div>
       <div>
-        <img src="/collection-1.png" alt="" />
+        <img src="/collection-1.png" alt="" loading="lazy" />
       </div>
     </div>
   );

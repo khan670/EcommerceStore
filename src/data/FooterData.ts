@@ -2,6 +2,7 @@ import { BsBoxSeam } from "react-icons/bs";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { MdPayment } from "react-icons/md";
 import { TbHours24 } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
 export const footerServices = [
   {
@@ -27,24 +28,23 @@ export const footerServices = [
 ];
 
 export const Stores = [
-  "New York",
-  "London SF",
-  "Los Angele",
-  "Paris",
-  "kasWegas",
+  { text: "New York", link: "/shop" },
+  { text: "London SF", link: "/shop" },
+  { text: "Los Angele", link: "/shop" },
+  { text: "Paris", link: "/shop" },
+  { text: "kasWegas", link: "/shop" },
 ];
 export const ShopCategories = [
-  "New Arrivals",
-  "Best Selling",
-  "Vegetables",
-  "Fresh Meat",
-  "Fresh Seafood",
+  { text: "New Arrivals", link: "/shop-grid" },
+  { text: "Best Selling", link: "/shop-grid" },
+  { text: "Vegetables", link: "/shop-grid" },
+  { text: "Fresh Meat", link: "/shop-grid" },
+  { text: "Fresh Seafood", link: "/shop-grid" },
 ];
 
 export const UseFullLinks = [
-  "Privacy Policy",
-  "Return Policy",
-  "Contact Us",
-  "Latest News",
-  "Our Sitemaps",
+  { text: "Privacy Policy", link: "/faqs" },
+  { text: "Return Policy", link: "/faqs" },
+  { text: "Contact Us", link: "/contact" },
+  { text: "Our Sitemaps", link: "/shop" },
 ];

@@ -6,7 +6,7 @@ const Customers: React.FC = () => {
   return (
     <div className="mt-10 bg-color-theme px-2 py-10">
       <Heading text="Happy Customers" className="text-white text-center" />
-      <div className="grid grid-cols-3 mt-20 gap-5">
+      <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-20 gap-5">
         {[1, 2, 3].map((value) => (
           <div key={value}>
             <div className="bg-white p-10 rounded-lg relative">
@@ -22,6 +22,7 @@ const Customers: React.FC = () => {
               <img
                 src="/customer-shape.png"
                 alt=""
+                loading="lazy"
                 className="absolute left-10 -bottom-5"
               />
             </div>
@@ -31,6 +32,7 @@ const Customers: React.FC = () => {
                 alt=""
                 width={50}
                 height={50}
+                loading="lazy"
                 className="rounded-full"
               />
               <div className="text-white ">

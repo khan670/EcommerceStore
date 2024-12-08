@@ -1,7 +1,9 @@
 import React from "react";
 import Button from "../../Buttons/Button";
+import { useNavigate } from "react-router-dom";
 
 const Discount: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-[url('/cta-bg.jpg')] text-center py-20   relative bg-fixed mix-blend-multiply bg-center bg-cover text-white mt-10">
       <div className="absolute top-0 left-0 w-full h-full bg-color-theme mix-blend-multiply"></div>
@@ -12,7 +14,12 @@ const Discount: React.FC = () => {
         <h1 className="text-4xl md:text-7xl w-[70%] font-extrabold ">
           -15% Off Discount All Here
         </h1>
-        <Button text="View Collection" isRed={false} isWhite={true} />
+        <Button
+          text="View Collection"
+          isRed={false}
+          isWhite={true}
+          handler={() => navigate("/shop")}
+        />
       </div>
     </div>
   );

@@ -88,7 +88,12 @@ const Categories: React.FC = () => {
               if (index <= 4)
                 return (
                   <div className="bg-gray-200 p-2 rounded flex flex-col gap-4 hover:bg-color-theme group hover:text-white cursor-pointer transition-all duration-300">
-                    <img src={value.image} alt="" className="rounded" />
+                    <img
+                      src={value.image}
+                      alt=""
+                      className="rounded"
+                      loading="lazy"
+                    />
                     <p className="uppercase mt-2 text-center font-bold text-color-heading group-hover:text-white ">
                       {value.name}
                     </p>

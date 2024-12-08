@@ -156,6 +156,7 @@ const ShopDetail: React.FC = () => {
           </p>
           <img
             src="https://html.rrdevs.net/roiser/assets/img/shop/shop-details-img.jpg"
+            loading="lazy"
             alt=""
           />
         </div>

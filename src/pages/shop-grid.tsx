@@ -90,7 +90,7 @@ const ShopGrid: React.FC = () => {
                 </div>
               )}
               <div className="mx-auto">
-                <Pagination totalPages={5} />
+                <Pagination totalPages={2} />
               </div>
             </>
           )}

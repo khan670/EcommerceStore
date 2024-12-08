@@ -7,6 +7,7 @@ import {
 } from "../data/FooterData";
 import { FaCcMastercard, FaCcPaypal, FaCcVisa } from "react-icons/fa";
 import { SiPayoneer } from "react-icons/si";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -74,9 +75,12 @@ const Footer = () => {
             <h1 className="text-lg font-extrabold">Our Store</h1>
             <div className="flex flex-col gap-3">
               {Stores.map((value) => (
-                <p className="text-sm text-color-text-body font-semibold hover:text-color-theme transition-all duration-300 cursor-pointer">
-                  {value}
-                </p>
+                <Link
+                  to={value.link}
+                  className="text-sm text-color-text-body font-semibold hover:text-color-theme transition-all duration-300 cursor-pointer"
+                >
+                  {value.text}
+                </Link>
               ))}
             </div>
           </div>
@@ -87,9 +91,12 @@ const Footer = () => {
             <h1 className="text-lg font-extrabold">Shop Categories</h1>
             <div className="flex flex-col gap-3">
               {ShopCategories.map((value) => (
-                <p className="text-sm text-color-text-body font-semibold hover:text-color-theme transition-all duration-300 cursor-pointer">
-                  {value}
-                </p>
+                <Link
+                  to={value.link}
+                  className="text-sm text-color-text-body font-semibold hover:text-color-theme transition-all duration-300 cursor-pointer"
+                >
+                  {value.text}
+                </Link>
               ))}
             </div>
           </div>
@@ -100,9 +107,12 @@ const Footer = () => {
             <h1 className="text-lg font-extrabold">Usefull Links</h1>
             <div className="flex flex-col gap-3">
               {UseFullLinks.map((value) => (
-                <p className="text-sm text-color-text-body font-semibold hover:text-color-theme transition-all duration-300 cursor-pointer">
-                  {value}
-                </p>
+                <Link
+                  to={value.link}
+                  className="text-sm text-color-text-body font-semibold hover:text-color-theme transition-all duration-300 cursor-pointer"
+                >
+                  {value.text}
+                </Link>
               ))}
             </div>
           </div>

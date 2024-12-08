@@ -1,5 +1,6 @@
 import React from "react";
 import { CollectionsData } from "../../../data/Fashions";
+import { Link } from "react-router-dom";
 
 const Collections: React.FC = () => {
   return (
@@ -24,9 +25,12 @@ const Collections: React.FC = () => {
               <p className="text-sm text-gray-500 leading-6">{value.text}</p>
             )}
             {value.collections.map((value) => (
-              <p className="text-color-heading font-semibold hover:text-color-theme text-sm cursor-pointer transition-all duration-300">
+              <Link
+                to="/shop"
+                className="text-color-heading font-semibold hover:text-color-theme text-sm cursor-pointer transition-all duration-300"
+              >
                 {value}
-              </p>
+              </Link>
             ))}
           </div>
         </div>

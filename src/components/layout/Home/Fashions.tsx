@@ -50,8 +50,9 @@ const Fashions = () => {
     queryKey: ["pagination"],
     queryFn: getAllProducts,
   });
+  if (query.isLoading) return <div className="loader"></div>;
   const productData = query.data;
-
+  if (query.isError) return <h1>Error in data Fetching</h1>;
   return (
     <div className="mt-16 px-2 overflow-hidden">
       <div className="flex justify-between items-center mb-3">

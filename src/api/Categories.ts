@@ -1,4 +1,4 @@
-import { formType } from "../pages/AddProduct";
+import { formType } from "../pages/Admin/AddProduct";
 
 export const getCategories = async () => {
   const data = await fetch("https://api.escuelajs.co/api/v1/categories");

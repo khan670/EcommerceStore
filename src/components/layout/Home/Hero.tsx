@@ -12,16 +12,19 @@ const Hero: React.FC = () => {
       <img
         src="/hero-peoples.png"
         alt=""
+        loading="lazy"
         className="absolute top-0 -left-32 z-10 hidden lg:block"
       />
       <img
         src="/hero-shape-1.png"
         alt=""
+        loading="lazy"
         className="absolute bottom-0 left-0 hidden lg:block"
       />
       <img
         src="/hero-shape-2.png"
         alt=""
+        loading="lazy"
         className="absolute top-0 right-0 z-[2] hidden lg:block"
       />
       <div className="container  flex flex-col  items-end justify-center z-30 relative h-screen">

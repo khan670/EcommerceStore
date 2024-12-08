@@ -42,7 +42,9 @@ const Login: React.FC = () => {
     await reset();
     await mutate(data);
     await Authorization();
-    navigate("/");
+    const users = await JSON.parse(localStorage.getItem("user") as string);
+    if (users.role === "admin") navigate("/admin");
+    else navigate("/");
   };
   return (
     <>

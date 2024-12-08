@@ -4,6 +4,7 @@
 @tailwind utilities;
 body {
   font-family: "Nunito", serif;
+  overflow-x: hidden;
 }
 
 ::selection {

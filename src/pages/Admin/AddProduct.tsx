@@ -1,12 +1,12 @@
 import React from "react";
 import { MdAddBox } from "react-icons/md";
-import InputField from "../components/Inputs/InputField";
-import Button from "../components/Buttons/Button";
+import InputField from "../../components/Inputs/InputField";
+import Button from "../../components/Buttons/Button";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
-import { addProductToStore } from "../api/Product";
+import { addProductToStore } from "../../api/Product";
 import { useMutation } from "@tanstack/react-query";
 
 const FormSchema = z.object({
@@ -58,7 +58,7 @@ const AddProduct: React.FC = () => {
       </div>
       <hr />
       <form action="" className="p-3 mt-5" onSubmit={handleSubmit(handleForm)}>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <InputField type="text" label="Title" {...register("title")} />
           <InputField type="string" label="Price" {...register("price")} />
           <InputField

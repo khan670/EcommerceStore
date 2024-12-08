@@ -3,7 +3,7 @@ import { ServiceData } from "../../../data/About";
 
 const Services: React.FC = () => {
   return (
-    <div className="grid gap-7 grid-cols-3 mt-10 px-2 py-5">
+    <div className="grid gap-7 md:grid-cols-3 grid-cols-1 mt-10 px-2 py-5">
       {ServiceData.map((value, index) => (
         <>
           <div className="flex flex-col items-center gap-5 py-7  px-6">
@@ -15,7 +15,7 @@ const Services: React.FC = () => {
               {value.paragraph}
             </p>
           </div>
-          <img src={value.imgUrl} alt="" />
+          <img src={value.imgUrl} alt="" loading="lazy" />
         </>
       ))}
     </div>

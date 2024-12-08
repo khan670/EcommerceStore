@@ -46,7 +46,7 @@ const Header: React.FC = () => {
       if (stickyRef.current) {
         const rect = stickyRef.current.getBoundingClientRect();
         const distanceFromTop = rect.top;
-        if (distanceFromTop <= -130) {
+        if (distanceFromTop <= -50) {
           setIsActive(true);
         } else {
           setIsActive(false);
@@ -84,6 +84,7 @@ const Header: React.FC = () => {
                 src={userData.avatar}
                 alt=""
                 width={40}
+                loading="lazy"
                 height={40}
                 className="rounded-full"
               />
@@ -94,20 +95,8 @@ const Header: React.FC = () => {
           className="py-6 bg-[#FFFFFF] px-3 flex items-center gap-5"
           ref={stickyRef}
         >
-          <img src="/logo-1.png" />
-          {/* <div className="border border-gray-300 py-2 px-3 flex items-center  ">
-          <p className="text-sm text-black font-bold border-r border-r-gray-300 px-2">
-            All Categories
-          </p>
-          <input
-            type="text"
-            placeholder="Search Here..."
-            className="px-3 text-sm focus:outline-none "
-          />
-          <button className="bg-color-theme text-white py-2 px-3 text-xs uppercase rounded">
-            search here
-          </button>
-        </div> */}
+          <img src="/logo-1.png" loading="lazy" />
+
           <div className="ml-auto">
             <div className="flex items-center gap-1 ">
               <div className="flex gap-2 items-center border-r border-r-gray-300 px-3">
@@ -159,7 +148,7 @@ const Header: React.FC = () => {
             isActive
               ? "fixed top-0 w-full shadow z-50"
               : "relative top-6 w-11/12 rounded-lg"
-          }  z-30 overflow-visible transition-all duration-1000`}
+          }  z-30 overflow-visible transition-all duration-300  `}
         >
           <div
             className={`flex-1 bg-color-heading py-4 ${
@@ -172,6 +161,8 @@ const Header: React.FC = () => {
                   (userData.name && item.title === "Register") ||
                   item.title === "login"
                 )
+                  return null;
+                if (item.title === "Admin" && userData.role !== "admin")
                   return null;
                 return (
                   <Link
@@ -200,7 +191,7 @@ const Header: React.FC = () => {
         </div>
       </header>
       <nav className="flex md:hidden bg-white w-full z-50 py-5 px-3  items-center justify-between fixed top-0 shadow">
-        <img src="/logo-1.png" alt="" width={150} height={30} />
+        <img src="/logo-1.png" alt="" width={150} height={30} loading="lazy" />
         <GiHamburgerMenu
           className="text-black"
           size={25}
@@ -213,7 +204,13 @@ const Header: React.FC = () => {
         } `}
       >
         <div className="flex justify-between items-center">
-          <img src="/logo-1.png" alt="" width={120} height={30} />
+          <img
+            src="/logo-1.png"
+            alt=""
+            width={120}
+            height={30}
+            loading="lazy"
+          />
           <span
             className="p-1 border rounded-full inline-block hover:bg-color-theme hover:text-white text-color-heading "
             onClick={() => setIsOpen(false)}
@@ -224,6 +221,7 @@ const Header: React.FC = () => {
         <div className="flex flex-col gap-5 mt-7 text-sm font-bold text-white items-center">
           {userData.avatar && (
             <img
+              loading="lazy"
               src={userData.avatar}
               alt=""
               width={100}
@@ -256,6 +254,18 @@ const Header: React.FC = () => {
                 </Link>
               );
             })}
+            <Link
+              to="/checkout"
+              className="hover:text-color-theme transition-all duration-300 border-b border-b-gray-200 py-2 w-full"
+            >
+              Checkout
+            </Link>
+            <Link
+              to="/about"
+              className="hover:text-color-theme transition-all duration-300 border-b border-b-gray-200 py-2 w-full"
+            >
+              About
+            </Link>
             <div className="flex gap-5 items-center  w-full">
               <span
                 className="text-2xl inline-block text-black bg-gray-200 p-3 rounded-full hover:bg-color-theme hover:text-white transition-all duration-300 cursor-pointer relative"

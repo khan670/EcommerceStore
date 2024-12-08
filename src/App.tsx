@@ -1,94 +1,164 @@
-import React from "react";
+import React, { Suspense } from "react";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home";
-import AppLayout from "./pages/AppLayout";
-import Shop from "./pages/Shop";
-import ShopDetail from "./pages/Shop-detail";
-import ShopGrid from "./pages/shop-grid";
-import AboutUs from "./pages/About-us";
-import Faqs from "./pages/Faqs";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout";
-import Contact from "./pages/Contact";
-import Admin from "./pages/Admin";
-import AddProduct from "./pages/AddProduct";
-import AddCategory from "./pages/AddCategory";
-import AllUsers from "./pages/AllUsers";
-import Profile from "./pages/Profile";
+import Loader from "./components/Loader";
+const Home = React.lazy(() => import("./pages/Home"));
+const AppLayout = React.lazy(() => import("./pages/AppLayout"));
+const Shop = React.lazy(() => import("./pages/Shop"));
+const ShopDetail = React.lazy(() => import("./pages/Shop-detail"));
+const ShopGrid = React.lazy(() => import("./pages/shop-grid"));
+const AboutUs = React.lazy(() => import("./pages/About-us"));
+const Faqs = React.lazy(() => import("./pages/Faqs"));
+const Login = React.lazy(() => import("./pages/Login"));
+const Register = React.lazy(() => import("./pages/Register"));
+const Cart = React.lazy(() => import("./pages/Cart"));
+const Checkout = React.lazy(() => import("./pages/Checkout"));
+const Contact = React.lazy(() => import("./pages/Contact"));
+const Admin = React.lazy(() => import("./pages/Admin/Admin"));
+const AddProduct = React.lazy(() => import("./pages/Admin/AddProduct"));
+const AddCategory = React.lazy(() => import("./pages/Admin/AddCategory"));
+const AllUsers = React.lazy(() => import("./pages/Admin/AllUsers"));
+const Profile = React.lazy(() => import("./pages/Admin/Profile"));
 
 const App: React.FC = () => {
   const router = createBrowserRouter([
     {
       path: "",
-      element: <AppLayout />,
+      element: (
+        <Suspense fallback={<Loader />}>
+          <AppLayout />
+        </Suspense>
+      ),
       children: [
         {
           path: "/",
-          element: <Home />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <Home />
+            </Suspense>
+          ),
         },
         {
           path: "/shop",
-          element: <Shop />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <Shop />
+            </Suspense>
+          ),
         },
         {
           path: "/shop/:shopId",
-          element: <ShopDetail />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <ShopDetail />
+            </Suspense>
+          ),
         },
         {
           path: "/shop/grid",
-          element: <ShopGrid />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <ShopGrid />
+            </Suspense>
+          ),
         },
         {
           path: "/about",
-          element: <AboutUs />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <AboutUs />
+            </Suspense>
+          ),
         },
         {
           path: "/faqs",
-          element: <Faqs />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <Faqs />
+            </Suspense>
+          ),
         },
         {
           path: "/login",
-          element: <Login />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <Login />
+            </Suspense>
+          ),
         },
         {
           path: "/register",
-          element: <Register />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <Register />
+            </Suspense>
+          ),
         },
         {
           path: "/cart",
-          element: <Cart />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <Cart />
+            </Suspense>
+          ),
         },
         {
           path: "/checkout",
-          element: <Checkout />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <Checkout />
+            </Suspense>
+          ),
         },
         {
           path: "/contact",
-          element: <Contact />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <Contact />
+            </Suspense>
+          ),
         },
       ],
     },
     {
       path: "admin",
-      element: <Admin />,
+      element: (
+        <Suspense fallback={<Loader />}>
+          <Admin />
+        </Suspense>
+      ),
       children: [
         {
           path: "",
-          element: <AddProduct />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <AddProduct />
+            </Suspense>
+          ),
         },
         {
           path: "addcategory",
-          element: <AddCategory />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <AddCategory />
+            </Suspense>
+          ),
         },
         {
           path: "allusers",
-          element: <AllUsers />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <AllUsers />
+            </Suspense>
+          ),
         },
         {
           path: "profile",
-          element: <Profile />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <Profile />
+            </Suspense>
+          ),
         },
       ],
     },

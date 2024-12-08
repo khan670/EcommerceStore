@@ -15,7 +15,7 @@ const Deals = () => {
   return (
     <div className="bg-gray-100 relative py-10 px-5 lg:p-20">
       <div className="absolute bottom-0 left-0 ">
-        <img src="/deal-shape.png" alt="" />
+        <img src="/deal-shape.png" alt="" loading="lazy" />
       </div>
       <div className="flex flex-col lg:flex-row items-center gap-10 relative z-10 ">
         <div className="lg:w-1/2 w-full flex flex-col items-start gap-10 ">

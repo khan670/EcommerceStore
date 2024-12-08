@@ -10,6 +10,7 @@ const PageSection: React.FC<PropType> = ({ pageHead }) => {
       <img
         src="/page-header-shape.png"
         alt=""
+        loading="lazy"
         className="absolute bottom-0 left-0"
       />
       <div className="relative z-10 flex justify-between ">

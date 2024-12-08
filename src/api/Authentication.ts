@@ -17,7 +17,8 @@ export const login = async (data: AuthenticationType) => {
 
 export const Authorization = async () => {
   try {
-    const token = await JSON.parse(localStorage.getItem("token") as string);
+    const token =
+      (await JSON.parse(localStorage.getItem("token") as string)) || "";
     const response = await fetch(
       "https://api.escuelajs.co/api/v1/auth/profile",
       {

@@ -2,7 +2,7 @@ export const HeaderLinks = [
   {
     id: 1,
     title: "about",
-    link: "/",
+    link: "/about",
   },
   {
     id: 2,
@@ -12,12 +12,12 @@ export const HeaderLinks = [
   {
     id: 3,
     title: "Wishlist",
-    link: "/",
+    link: "/checkout",
   },
   {
     id: 4,
     title: "Checkout",
-    link: "/",
+    link: "/checkout",
   },
 ];
 
@@ -74,5 +74,10 @@ export const NavigationData = [
     id: 6,
     title: "Faqs",
     link: "/faqs",
+  },
+  {
+    id: 7,
+    title: "Admin",
+    link: "/admin",
   },
 ];

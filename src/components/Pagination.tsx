@@ -5,13 +5,15 @@ import { useSearchParams } from "react-router-dom";
 interface PropType {
   totalPages?: number;
   itemsPerPage?: number;
+  handlePageChange?: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Pagination: React.FC<PropType> = ({ totalPages }) => {
+const Pagination: React.FC<PropType> = ({ totalPages, handlePageChange }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [, setParams] = useSearchParams();
   const handleSearchParams = (page: number) => {
     setParams({ page: String(page) });
+    handlePageChange(page);
   };
   const handleNextPage = () => {
     const nextPage = currentPage < Number(totalPages) ? currentPage + 1 : 1;
